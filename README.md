@@ -106,7 +106,7 @@ Lucrăm în **sprinturi Scrum**. Taskurile sunt pe [board-ul Kanban](https://git
 - Când ai deschis pull request-ul, îl muți în **In review**
 - Ajunge în **Done** numai după ce l-a testat Brigitte
 
-**Etichete utile:** `pereche-1: chestionare`, `pereche-2: skill tree & lecții`, `pereche-3: instrumente & UI`, `rol: Product Owner`, `rol: Scrum Master`, `rol: tester`, `frontend`, `backend / Supabase`, `conținut`, `must` / `should` / `could`
+**Etichete utile:** `pereche-1: chestionare`, `pereche-2: skill tree & lecții`, `pereche-3: instrumente & UI`, `rol: Product Owner`, `rol: Scrum Master`, `rol: tester`, `frontend`, `backend`, `supabase`, `conținut`, `must` / `should` / `could`
 
 ### Git
 

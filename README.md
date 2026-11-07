@@ -6,7 +6,7 @@ Aplicație educațională cu 4 niveluri (lecții video, chestionare, instrumente
 > conține deocamdată doar partea tehnică agreată la tichetul **#1** (stack + structură).
 > La merge-ul PR-ului #57, secțiunile se unesc.
 
-## Stack (decizia #1)
+## Stack 
 
 | Aspect    | Alegere                                   |
 | --------- | ----------------------------------------- |
@@ -18,9 +18,6 @@ Aplicație educațională cu 4 niveluri (lecții video, chestionare, instrumente
 | Instalare | `npm ci` din `package-lock.json` (commis) |
 | Deploy    | Vercel / Netlify (ulterior)               |
 
-De ce: un singur target de build, HMR rapid, onboarding ușor pentru toți cei 6, iar
-TypeScript ne pregătește pentru tipuri generate din schema Supabase. Verificarea testului
-pentru deblocarea nivelului se va face **pe server** (Supabase), nu în frontend (#44).
 
 ## Pornire locală
 
@@ -32,7 +29,7 @@ npm ci             # instalează exact versiunile din package-lock.json
 npm run dev        # pornește aplicația (merge și fără .env / fără Supabase)
 ```
 
-Pentru variabilele de mediu (necesare abia la #44): copiază `.env.example` în `.env`.
+Pentru variabilele de mediu: copiază `.env.example` în `.env`.
 
 ### Scripturi
 
@@ -51,15 +48,15 @@ Pentru variabilele de mediu (necesare abia la #44): copiază `.env.example` în 
 ```text
 src/
   screens/      # ecrane (lecție, test, examen) — se umplu la tichetele lor
-  components/   # componente de UI reutilizabile (design comun — #3)
-  content/      # conținut JSON: lecții + chestionare (format — #2)
-  services/     # tot ce vorbește cu Supabase (backend — #44)
-  lib/          # client Supabase și utilitare (#44)
+  components/   # componente de UI reutilizabile 
+  content/      # conținut JSON: lecții + chestionare 
+  services/     # tot ce vorbește cu Supabase 
+  lib/          # client Supabase și utilitare
   styles/       # stiluri globale
 supabase/
-  migrations/   # migrații SQL (schemă + RLS — #44)
+  migrations/   # migrații SQL 
 ```
 
 Folderele de mai sus sunt create de la început (criteriul de structură din #1); se
 populează la tichetele corespunzătoare. Convenție git: un branch per tichet
-(`feature/<nr>-...`), PR cu `Closes #<nr>`, protecție pe `main`.
+(`initialele_voastre/<nrTichet>/descriere`).

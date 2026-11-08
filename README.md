@@ -1,10 +1,83 @@
 # CacheFlow
 
-Aplicație educațională cu 4 niveluri (lecții video, chestionare, instrumente, examen final).
+> Aplicație de educație financiară gamificată pentru tineri: înveți să-ți gestionezi banii prin lecții video, chestionare și simulări, nu prin teorie.
 
-> Notă: viziunea completă, echipa și modul de lucru se află în PR #57. Acest README
-> conține deocamdată doar partea tehnică agreată la tichetul **#1** (stack + structură).
-> La merge-ul PR-ului #57, secțiunile se unesc.
+## Viziune
+
+CacheFlow îi învață pe tinerii de 16–25 de ani, mai ales pe cei care părăsesc sistemul de protecție a copilului (centrele de plasament), conceptele financiare de bază: cum îți faci un buget, ce înseamnă o chirie, cum îți plătești facturile, cum economisești și cum te ferești de înșelătorii.
+
+Lipsa educației financiare la vârsta majoratului îi poate duce pe tinerii vulnerabili direct în datorii. CacheFlow vrea să fie un „simulator de viață reală”, în care greșelile se fac în aplicație, nu în viața reală.
+
+## Cum funcționează
+
+Aplicația are trei secțiuni, ca o aplicație de chestionare auto, plus un instrument pentru viața reală:
+
+```
+            ┌──────────────┐     ┌──────────────┐
+Acasă ───►  │ 1. STUDIU    │ ──► │ 2. EXAMEN    │
+   │        │ învață       │     │ verifică     │
+   │        └──────────────┘     └──────────────┘
+   └──────► 3. BUGETUL MEU (oricând)
+```
+
+### 1. Studiu
+
+Patru niveluri, parcurse în ordine:
+
+```
+Bugetul personal → Economii și urgențe → Taxe și salariu → Investiții și dobândă
+```
+
+Fiecare nivel are:
+
+1. **Lecții video scurte** (2–5 minute)
+2. **Chestionar de exersare**: grilă cu unul sau mai multe răspunsuri corecte, cu explicație imediată după fiecare răspuns. Fără prag, aici greșelile sunt binevenite.
+3. **Un instrument interactiv**:
+
+   | Nivel | Instrument |
+   |---|---|
+   | 1. Bugetul personal | Simulatorul de buget lunar: venit, chirie, facturi, mâncare, cheltuieli neprevăzute |
+   | 2. Economii și urgențe | Jocul de decizii („chirie singur sau cu colegi?”), cu raport final despre consecințe |
+   | 3. Taxe și salariu | Calculatorul „câte ore de muncă costă” un obiect |
+   | 4. Investiții și dobândă | Vizualizatorul de dobândă compusă (18 vs. 30 de ani) și simulatorul de inflație |
+
+Un nivel e **studiat** după ce ai văzut lecțiile și ai terminat exersarea. Atunci se deschide nivelul următor din Studiu și testul acelui nivel din Examen.
+
+### 2. Examen
+
+| Ce | Reguli | Prag |
+|---|---|---|
+| **Test de nivel** (câte unul pentru fiecare nivel studiat) | 10 întrebări aleatorii, fără limită de timp, explicațiile la final | **90%**: minimum 9/10 |
+| **Examen final** (după ce treci toate cele 4 teste) | 20 de întrebări (5 din fiecare nivel), 25 de minute, se oprește la a 3-a greșeală | **90%**: minimum 18/20 |
+
+Dacă pici, reiei cu alte întrebări din bancă. Întrebările greșite ajung în lista **„Întrebările mele greșite”**, pe care o poți relua oricând. La final primești un raport și un certificat.
+
+### 3. Bugetul meu
+
+Un instrument pentru banii reali ai utilizatorului, separat de simulatorul din Nivelul 1:
+
+- introduci venitul lunar și îl **împarți pe categorii** (chirie, utilități, mâncare, transport, economii, timp liber etc.)
+- primești o **împărțire sugerată** (de exemplu regula 50/30/20: nevoi / dorințe / economii), pe care o poți ajusta
+- vezi împărțirea într-un grafic și cât a rămas nealocat
+- notezi cheltuielile pe parcursul lunii și vezi cât mai ai pe fiecare categorie
+
+### În afara MVP-ului (mai târziu)
+
+- Comparatorul de credite
+- Secțiunea despre fraude online, credite cu dobânzi ascunse și contracte de muncă
+
+## Echipa
+
+| Rol | Membri |
+|---|---|
+| Product Owner | Nițan Ioana |
+| Scrum Master | Perșa Diana-Alexandra |
+| Tester | Mranovatz Brigitte |
+| Dezvoltare – perechea 1: chestionare, teste, examen | Leaț Elena Anabela, Putanu Elena-Florina |
+| Dezvoltare – perechea 2: skill tree, lecții, cont, progres | Popa Miruna Andreea, Nodiș Bianca-Loredana |
+| Dezvoltare – perechea 3: instrumente interactive, Bugetul meu, design | Stoina Alexia Fanuria, Vălcan Georgiana-Ana |
+
+Fiecare pereche își face funcționalitățile cap-coadă, cu frontend-ul și partea de Supabase din spate.
 
 ## Stack (decizia #1)
 
@@ -35,6 +108,13 @@ npm run dev        # pornește aplicația (merge și fără Supabase)
 Aplicația pornește pe `http://localhost:3000`. Pentru variabilele de mediu (necesare
 abia la #44): copiază `.env.example` în `.env.local`.
 
+| Variabilă | Descriere |
+|---|---|
+| `NEXT_PUBLIC_SUPABASE_URL` | URL-ul proiectului Supabase |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Cheia publică `anon` |
+
+> ⚠️ Repo-ul e **public**. `.env.local` nu se pune niciodată pe GitHub, iar cheia `service_role` nu se folosește niciodată în cod de client.
+
 ### Scripturi
 
 | Script                 | Ce face                           |
@@ -60,5 +140,37 @@ supabase/
 ```
 
 Folderele goale sunt create de la început (criteriul de structură din #1) și se
-populează la tichetele corespunzătoare. Convenție git: un branch per tichet
-(`feature/<nr>-...`), PR cu `Closes #<nr>`, protecție pe `main`.
+populează la tichetele corespunzătoare.
+
+## Formatul conținutului
+
+Lecțiile și întrebările se scriu în fișiere JSON în `content/` și se încarcă în Supabase printr-un script de seed ([#47](https://github.com/CacheFlow-Project/CacheFlow/issues/47)). Formatul final se stabilește în [#2](https://github.com/CacheFlow-Project/CacheFlow/issues/2). Propunerea de pornire arată așa:
+
+```json
+{
+  "nivel": 1,
+  "intrebare": "Ce ar trebui să incluzi în bugetul lunar pe lângă chirie?",
+  "variante": ["Utilități", "Abonamentul la sală", "Mâncare", "Fond de urgență"],
+  "corecte": [0, 2, 3],
+  "explicatie": "Utilitățile, mâncarea și economiile sunt cheltuieli esențiale; sala e opțională."
+}
+```
+
+Cu pragul de 90%, fiecare nivel are nevoie de **cel puțin 30 de întrebări** în bancă, ca testele repetate să primească întrebări diferite. Fiecare întrebare e verificată de tester și aprobată de Product Owner înainte să intre în aplicație.
+
+## Cum lucrăm
+
+Regulile complete (board, Definition of Done, Git, daily, retrospectivă, calendarul sprintului) sunt în [CONTRIBUTING.md](CONTRIBUTING.md). Pe scurt:
+
+- Taskurile sunt pe [board-ul Kanban](https://github.com/orgs/CacheFlow-Project/projects/1)
+- Un branch pentru fiecare issue (`feature/<nr>-...`), pull request cu `Closes #<nr>`
+- `main` e protejat: merge doar cu cel puțin un review aprobat, fără push direct
+- Un task e gata doar după ce l-a testat Brigitte
+
+**Etichete utile:** `pereche-1: chestionare`, `pereche-2: skill tree & lecții`, `pereche-3: instrumente & UI`, `rol: Product Owner`, `rol: Scrum Master`, `rol: tester`, `frontend`, `backend`, `supabase`, `conținut`, `must` / `should` / `could`
+
+## Linkuri
+
+- [Board Kanban](https://github.com/orgs/CacheFlow-Project/projects/1)
+- [Issues](https://github.com/CacheFlow-Project/CacheFlow/issues)
+- [Milestones](https://github.com/CacheFlow-Project/CacheFlow/milestones)

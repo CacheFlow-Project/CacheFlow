@@ -68,16 +68,16 @@ Un instrument pentru banii reali ai utilizatorului, separat de simulatorul din N
 
 ## Echipa
 
-| Rol | Membri |
-|---|---|
-| Product Owner | Nițan Ioana |
-| Scrum Master | Perșa Diana-Alexandra |
-| Tester | Mranovatz Brigitte |
-| Dezvoltare – perechea 1: chestionare, teste, examen | Leaț Elena Anabela, Putanu Elena-Florina |
-| Dezvoltare – perechea 2: skill tree, lecții, cont, progres | Popa Miruna Andreea, Nodiș Bianca-Loredana |
-| Dezvoltare – perechea 3: instrumente interactive, Bugetul meu, design | Stoina Alexia Fanuria, Vălcan Georgiana-Ana |
+| Rol | Membri | Ce face |
+|---|---|---|
+| Product Owner | Nițan Ioana | ce se construiește și în ce ordine, conținutul |
+| Scrum Master | Perșa Diana-Alexandra | ritmul echipei, board-ul, deblocarea problemelor; ajută la backend |
+| Frontend | Putanu Elena-Florina, Vălcan Georgiana-Ana | ecranele, design-ul comun, instrumentele interactive |
+| Backend | Leaț Elena Anabela, Stoina Alexia Fanuria | logica de server (Server Actions): chestionare, teste, progres, buget |
+| Database | Popa Miruna Andreea, Nodiș Bianca-Loredana | Supabase: schema, migrațiile, Row Level Security, autentificarea, stocarea |
+| Tester / QA | Mranovatz Brigitte | cazuri de test, verificarea fiecărui task, verificarea întrebărilor |
 
-Fiecare pereche își face funcționalitățile cap-coadă, cu frontend-ul și partea de Supabase din spate.
+O funcționalitate trece de obicei prin toate cele trei echipe: database pregătește tabelele, backend scrie logica, frontend face ecranul. Cine lucrează efectiv la un task se vede la **Assignees** pe issue.
 
 ## Stack (decizia #1)
 
@@ -167,7 +167,7 @@ Regulile complete (board, Definition of Done, Git, daily, retrospectivă, calend
 - `main` e protejat: merge doar cu cel puțin un review aprobat, fără push direct
 - Un task e gata doar după ce l-a testat Brigitte
 
-**Etichete utile:** `pereche-1: chestionare`, `pereche-2: skill tree & lecții`, `pereche-3: instrumente & UI`, `rol: Product Owner`, `rol: Scrum Master`, `rol: tester`, `frontend`, `backend`, `supabase`, `conținut`, `must` / `should` / `could`
+**Etichete utile:** `frontend`, `backend`, `database`, `rol: Product Owner`, `rol: Scrum Master`, `rol: tester`, `conținut`, `bugetul meu`, `must` / `should` / `could`
 
 ## Linkuri
 

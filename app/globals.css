@@ -3,6 +3,16 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  
+  
+  --primary: #2563eb; 
+  --primary-foreground: #ffffff; 
+  
+  --secondary: #f3f4f6; 
+  --secondary-foreground: #1f2937; 
+  
+  --accent: #10b981; 
+  --destructive: #ef4444; 
 }
 
 @theme inline {
@@ -16,6 +26,13 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    
+    --primary: #3b82f6;
+    --primary-foreground: #ffffff;
+    --secondary: #1f2937;
+    --secondary-foreground: #f9fafb;
+    --accent: #10b981;
+    --destructive: #7f1d1d;
   }
 }
 

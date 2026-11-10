@@ -14,15 +14,15 @@ erDiagram
   questions ||--o{ wrong_answers : missed_in
 ```
 
-| Tabel | Rol |
-|---|---|
-| profiles | Datele utilizatorului, legat de auth.users |
-| levels | Nivelurile aplicației, în ordine |
-| lessons | Lecțiile dintr-un nivel |
-| questions | Întrebările unei lecții |
-| user_progress | Ce lecții a terminat fiecare utilizator |
-| quiz_attempts | Încercările de quiz și scorul |
-| wrong_answers | Răspunsurile greșite dintr-o încercare |
+| Tabel         | Rol                                        |
+| ------------- | ------------------------------------------ |
+| profiles      | Datele utilizatorului, legat de auth.users |
+| levels        | Nivelurile aplicației, în ordine           |
+| lessons       | Lecțiile dintr-un nivel                    |
+| questions     | Întrebările unei lecții                    |
+| user_progress | Ce lecții a terminat fiecare utilizator    |
+| quiz_attempts | Încercările de quiz și scorul              |
+| wrong_answers | Răspunsurile greșite dintr-o încercare     |
 
 Migrațiile se găsesc în `supabase/migrations`.
 Aplicație educațională cu 4 niveluri (lecții video, chestionare, instrumente, examen final).
@@ -87,3 +87,28 @@ supabase/
 Folderele goale sunt create de la început (criteriul de structură din #1) și se
 populează la tichetele corespunzătoare. Convenție git: un branch per tichet
 (`feature/<nr>-...`), PR cu `Closes #<nr>`, protecție pe `main`.
+
+## Formatul conținutului
+
+Exemplele de lecții și întrebări sunt în `content/example.json`. Fișierele de conținut folosesc JSON, cu două liste: `lectii` și `intrebari`.
+
+### Lecții
+
+Fiecare lecție conține:
+
+- `nivel`: numărul nivelului, de la 1 la 4;
+- `titlu`: titlul lecției;
+- `link_video`: linkul video al lecției;
+- `descriere`: o scurtă descriere a lecției.
+
+### Întrebări
+
+Fiecare întrebare conține:
+
+- `nivel`: numărul nivelului, de la 1 la 4;
+- `intrebare`: textul întrebării;
+- `variante`: lista variantelor de răspuns;
+- `corecte`: lista pozițiilor variantelor corecte, numerotate de la `0`;
+- `explicatie`: explicația răspunsului.
+
+`corecte` poate conține una sau mai multe poziții. De exemplu, `[0, 2]` înseamnă că prima și a treia variantă sunt corecte. Răspunsul este corect numai dacă variantele selectate coincid exact cu toate variantele corecte.

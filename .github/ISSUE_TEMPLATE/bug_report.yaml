@@ -1,0 +1,22 @@
+Title: [WHERE THE BUG APPEARS] - short description
+
+Description: detailed description of what happend
+
+Visual proof: screenshot/screen recording
+
+Expected result: what should happen
+
+Actual result: what happend wrong
+
+Steps to reproduce: steps taken that made the bug appear 
+
+Environment: 
+
+Console logs: 
+
+Network requests: 
+
+Source URL: 
+
+Severity and priority: 
+

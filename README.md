@@ -112,3 +112,47 @@ Fiecare întrebare conține:
 - `explicatie`: explicația răspunsului.
 
 `corecte` poate conține una sau mai multe poziții. De exemplu, `[0, 2]` înseamnă că prima și a treia variantă sunt corecte. Răspunsul este corect numai dacă variantele selectate coincid exact cu toate variantele corecte.
+
+## Design comun (#3)
+
+Toate ecranele folosesc aceeași paletă, același font și componentele din `components/`.
+Pagina `/demo` le arată pe toate, cu date din `content/example.json`.
+
+### Fonturi
+
+- **Geist** pentru tot textul aplicației (inclusiv diacriticele ă, â, î, ș, ț).
+- **Geist Mono** doar pentru cifre sau cod, dacă e nevoie (`font-mono`).
+
+Fonturile se încarcă prin `next/font/google` în `app/layout.tsx`, deci nu depind de
+fonturile instalate pe telefon.
+
+### Paleta de culori
+
+Culorile sunt definite o singură dată în `app/globals.css` și se folosesc ca clase Tailwind
+(ex. `bg-primary`, `text-correct`, `bg-wrong-soft`). Nu se scriu culori hex direct în componente.
+
+| Rol                   | Clasă Tailwind                           | Luminos               | Întunecat             |
+| --------------------- | ---------------------------------------- | --------------------- | --------------------- |
+| Fundal pagină / text  | `bg-background` / `text-foreground`      | `#ffffff` / `#171717` | `#0a0a0a` / `#ededed` |
+| Fundal card / margine | `bg-surface` / `border-border`           | `#ffffff` / `#e5e5e5` | `#171717` / `#2e2e2e` |
+| Text secundar         | `text-muted`                             | `#525252`             | `#a3a3a3`             |
+| Acțiune principală    | `bg-primary` + `text-primary-foreground` | `#1d4ed8`             | `#60a5fa`             |
+| Disponibil (fundal)   | `bg-primary-soft`                        | `#dbeafe`             | `#172554`             |
+| Corect / trecut       | `text-correct` / `bg-correct-soft`       | `#15803d` / `#dcfce7` | `#4ade80` / `#052e16` |
+| Greșit                | `text-wrong` / `bg-wrong-soft`           | `#b91c1c` / `#fee2e2` | `#f87171` / `#450a0a` |
+| Blocat                | `text-locked` / `bg-locked-soft`         | `#525252` / `#f5f5f5` | `#a3a3a3` / `#262626` |
+
+Modul întunecat se aplică automat după setarea telefonului. Toate perechile text/fundal au
+contrast de minimum 4.5:1 (WCAG AA).
+
+### Componente
+
+| Componentă       | Fișier                          | La ce folosește                                         |
+| ---------------- | ------------------------------- | ------------------------------------------------------- |
+| `Button`         | `components/Button.tsx`         | Butoane; variantele `primary` și `secondary`            |
+| `Card`           | `components/Card.tsx`           | Container cu margine pentru conținut                    |
+| `ProgressBar`    | `components/ProgressBar.tsx`    | Progres 0–100, accesibil (`role="progressbar"`)         |
+| `StatusBadge`    | `components/StatusBadge.tsx`    | Starea unui nivel: blocat / disponibil / trecut         |
+| `AnswerFeedback` | `components/AnswerFeedback.tsx` | Mesajul „Corect!” / „Greșit!” cu explicația răspunsului |
+
+Ecranele sunt gândite mobile first și se verifică de la 360 px lățime în sus.

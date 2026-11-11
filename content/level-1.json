@@ -1,0 +1,50 @@
+{
+  "position": 1,
+  "title": "Bugetul personal",
+  "description": "O introducere despre organizarea veniturilor și cheltuielilor personale.",
+  "tool": "buget-personal",
+  "lessons": [
+    {
+      "position": 1,
+      "title": "Bugetul personal",
+      "video_url": "https://example.com/video-de-completat",
+      "duration_sec": 0,
+      "description": "O introducere despre organizarea veniturilor și cheltuielilor personale."
+    }
+  ],
+  "questions": [
+    {
+      "id": "L1-Q01",
+      "text": "Ce descrie cel mai bine un buget personal?",
+      "options": [
+        "Un plan pentru veniturile și cheltuielile unei perioade",
+        "O listă doar cu datoriile",
+        "O sumă fixă oferită de stat"
+      ],
+      "correct": [0],
+      "explanation": "Bugetul ajută la planificarea și urmărirea veniturilor și cheltuielilor."
+    },
+    {
+      "id": "L1-Q02",
+      "text": "Care dintre acestea este, de obicei, o cheltuială fixă?",
+      "options": [
+        "Chiria lunară prevăzută în contract",
+        "O cumpărătură făcută o singură dată",
+        "Un cadou ocazional"
+      ],
+      "correct": [0],
+      "explanation": "Chiria prevăzută în contract este, de regulă, o cheltuială recurentă."
+    },
+    {
+      "id": "L1-Q03",
+      "text": "Ce acțiuni te pot ajuta să urmărești cheltuielile?",
+      "options": [
+        "Să notezi cheltuielile",
+        "Să păstrezi bonurile",
+        "Să ignori cheltuielile mici"
+      ],
+      "correct": [0, 1],
+      "explanation": "Notarea cheltuielilor și păstrarea bonurilor ajută la urmărirea banilor cheltuiți."
+    }
+  ]
+}

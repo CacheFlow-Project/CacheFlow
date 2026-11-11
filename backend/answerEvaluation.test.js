@@ -27,3 +27,9 @@ test("răspunsul gol este valid doar dacă și corectul e gol", () => {
   assert.equal(isAnswerCorrect([], []), true);
   assert.equal(isAnswerCorrect([], [0]), false);
 });
+
+test("intrarea invalidă este respinsă", () => {
+  assert.equal(isAnswerCorrect(null, [0]), false);
+  assert.equal(isAnswerCorrect([0, "x"], [0]), false);
+  assert.equal(isAnswerCorrect([0, 1], "x"), false);
+});

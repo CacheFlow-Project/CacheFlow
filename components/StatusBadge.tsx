@@ -2,6 +2,7 @@ export type Status = "locked" | "available" | "passed";
 
 type StatusBadgeProps = {
   status: Status;
+  label?: string;
   className?: string;
 };
 
@@ -11,14 +12,14 @@ const statusStyles: Record<Status, { label: string; classes: string }> = {
   passed: { label: "Trecut", classes: "bg-correct-soft text-correct" },
 };
 
-export default function StatusBadge({ status, className = "" }: StatusBadgeProps) {
-  const { label, classes } = statusStyles[status];
+export default function StatusBadge({ status, label, className = "" }: StatusBadgeProps) {
+  const { label: defaultLabel, classes } = statusStyles[status];
 
   return (
     <span
       className={`inline-flex items-center rounded-full px-3 py-1 text-sm font-medium ${classes} ${className}`}
     >
-      {label}
+      {label ?? defaultLabel}
     </span>
   );
 }

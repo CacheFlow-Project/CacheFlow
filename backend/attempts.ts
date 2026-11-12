@@ -1,0 +1,195 @@
+"use server";
+
+import { createClient } from "@/lib/supabase/server";
+import { createAdminClient } from "@/lib/supabase/admin";
+import { isExactMatch } from "@/lib/questions";
+
+type AttemptType = "practice" | "level_test" | "final_exam";
+type EndedReason = "completed" | "timeout" | "max_mistakes";
+
+const PASS_RATIO = 0.9;
+
+/** Întoarce id-ul utilizatorului din sesiune. Niciodată din parametri de browser. */
+async function requireUserId(): Promise<string> {
+  const supabase = await createClient();
+  const { data, error } = await supabase.auth.getUser();
+  if (error || !data.user) {
+    throw new Error("Neautentificat.");
+  }
+  return data.user.id;
+}
+
+/**
+ * Creează o încercare nouă (exersare / test de nivel / examen final).
+ * La examenul final `level_id` este null.
+ */
+export async function createAttempt(type: AttemptType, levelId?: number) {
+  const userId = await requireUserId();
+  const supabase = await createClient();
+
+  const { data, error } = await supabase
+    .from("quiz_attempts")
+    .insert({
+      user_id: userId,
+      type,
+      level_id: type === "final_exam" ? null : (levelId ?? null),
+    })
+    .select("id")
+    .single();
+
+  if (error) {
+    throw new Error(`Nu am putut crea încercarea: ${error.message}`);
+  }
+  return { id: data.id as number };
+}
+
+/**
+ * Salvează răspunsul la o întrebare dintr-o încercare și dacă e corect
+ * (evaluat pe server).
+ *
+ * - La `practice` întoarce feedback imediat: corect/greșit + răspunsurile corecte
+ *   + explicația.
+ * - La `level_test` / `final_exam` NU întoarce nimic despre corectitudine
+ *   (feedbackul apare abia la `finishAttempt`).
+ */
+export async function saveAnswer(attemptId: number, questionId: number, selected: number[]) {
+  const userId = await requireUserId();
+  const supabase = await createClient();
+
+  // 1. Încercarea trebuie să fie a userului (RLS) și NEîncheiată.
+  const { data: attempt, error: attemptError } = await supabase
+    .from("quiz_attempts")
+    .select("id, type, finished_at")
+    .eq("id", attemptId)
+    .single();
+
+  if (attemptError || !attempt) {
+    throw new Error("Încercarea nu există sau nu îți aparține.");
+  }
+  if (attempt.finished_at) {
+    throw new Error("Încercarea este deja încheiată.");
+  }
+
+  // 2. Citim cheia de răspuns DOAR pe server (admin ocolește RLS pe `questions`).
+  const admin = createAdminClient();
+  const { data: question, error: questionError } = await admin
+    .from("questions")
+    .select("correct_answers, explanation")
+    .eq("id", questionId)
+    .single();
+
+  if (questionError || !question) {
+    throw new Error("Întrebarea nu există.");
+  }
+
+  const correct = (question.correct_answers as number[]) ?? [];
+  // Eliminăm duplicatele din selecția clientului înainte de comparație.
+  const uniqueSelected = [...new Set(selected)];
+  const isCorrect = isExactMatch(uniqueSelected, correct);
+
+  // 3. Salvăm răspunsul (upsert pe încercare+întrebare). RLS verifică proprietatea.
+  const { error: answerError } = await supabase.from("attempt_answers").upsert(
+    {
+      attempt_id: attemptId,
+      question_id: questionId,
+      selected: uniqueSelected,
+      is_correct: isCorrect,
+    },
+    { onConflict: "attempt_id,question_id" },
+  );
+
+  if (answerError) {
+    throw new Error(`Nu am putut salva răspunsul: ${answerError.message}`);
+  }
+
+  // 4. Dacă e greșit, îl adăugăm în „Întrebările mele greșite" fără duplicate
+  //    pe o întrebare nerezolvată (indexul unic parțial e garda finală).
+  if (!isCorrect) {
+    const { data: existing } = await supabase
+      .from("wrong_answers")
+      .select("id")
+      .eq("user_id", userId)
+      .eq("question_id", questionId)
+      .is("resolved_at", null)
+      .maybeSingle();
+
+    if (!existing) {
+      const { error: wrongError } = await supabase.from("wrong_answers").insert({
+        user_id: userId,
+        attempt_id: attemptId,
+        question_id: questionId,
+        given_answer: JSON.stringify(uniqueSelected),
+      });
+      if (wrongError) {
+        throw new Error(`Nu am putut salva greșeala: ${wrongError.message}`);
+      }
+    }
+  }
+
+  // 5. Feedback doar la exersare.
+  if (attempt.type === "practice") {
+    return {
+      isCorrect,
+      correctAnswers: correct,
+      explanation: (question.explanation as string | null) ?? null,
+    };
+  }
+  return { saved: true as const };
+}
+
+/**
+ * Încheie o încercare: calculează scorul, dacă a trecut (prag 90% la test/examen)
+ * și motivul încheierii. O încercare încheiată nu mai poate fi modificată.
+ */
+export async function finishAttempt(attemptId: number, reason: EndedReason) {
+  const supabase = await createClient();
+
+  const { data: attempt, error: attemptError } = await supabase
+    .from("quiz_attempts")
+    .select("id, type, finished_at")
+    .eq("id", attemptId)
+    .single();
+
+  if (attemptError || !attempt) {
+    throw new Error("Încercarea nu există sau nu îți aparține.");
+  }
+  if (attempt.finished_at) {
+    throw new Error("Încercarea este deja încheiată.");
+  }
+
+  const { data: answers, error: answersError } = await supabase
+    .from("attempt_answers")
+    .select("is_correct")
+    .eq("attempt_id", attemptId);
+
+  if (answersError) {
+    throw new Error(`Nu am putut calcula scorul: ${answersError.message}`);
+  }
+
+  const total = answers.length;
+  const score = answers.filter((a) => a.is_correct).length;
+
+  // Doar testul și examenul au prag. Trecut doar dacă s-a terminat normal.
+  let passed: boolean | null = null;
+  if (attempt.type === "level_test" || attempt.type === "final_exam") {
+    passed = reason === "completed" && total > 0 && score / total >= PASS_RATIO;
+  }
+
+  const { error: updateError } = await supabase
+    .from("quiz_attempts")
+    .update({
+      finished_at: new Date().toISOString(),
+      ended_reason: reason,
+      score,
+      total_questions: total,
+      passed,
+    })
+    .eq("id", attemptId)
+    .is("finished_at", null);
+
+  if (updateError) {
+    throw new Error(`Nu am putut încheia încercarea: ${updateError.message}`);
+  }
+
+  return { score, total, passed };
+}

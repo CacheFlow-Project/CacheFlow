@@ -9,6 +9,15 @@ type EndedReason = "completed" | "timeout" | "max_mistakes";
 
 const PASS_RATIO = 0.9;
 
+// Numărul de întrebări pe test (regulă de produs), folosit ca TOTAL la calculul
+// scorului — ca promovarea să nu poată fi obținută răspunzând la o singură întrebare.
+// level_test: 10 întrebări, minimum 9/10 (AGENTS.md §7).
+// final_exam: 20 întrebări (fluxul PO) — de confirmat cu PO-ul, nu e în AGENTS.md.
+const TEST_QUESTION_COUNT: Record<"level_test" | "final_exam", number> = {
+  level_test: 10,
+  final_exam: 20,
+};
+
 /** Întoarce id-ul utilizatorului din sesiune. Niciodată din parametri de browser. */
 async function requireUserId(): Promise<string> {
   const supabase = await createClient();
@@ -59,7 +68,7 @@ export async function saveAnswer(attemptId: number, questionId: number, selected
   // 1. Încercarea trebuie să fie a userului (RLS) și NEîncheiată.
   const { data: attempt, error: attemptError } = await supabase
     .from("quiz_attempts")
-    .select("id, type, finished_at")
+    .select("id, type, level_id, finished_at")
     .eq("id", attemptId)
     .single();
 
@@ -74,12 +83,18 @@ export async function saveAnswer(attemptId: number, questionId: number, selected
   const admin = createAdminClient();
   const { data: question, error: questionError } = await admin
     .from("questions")
-    .select("correct_answers, explanation")
+    .select("level_id, correct_answers, explanation")
     .eq("id", questionId)
     .single();
 
   if (questionError || !question) {
     throw new Error("Întrebarea nu există.");
+  }
+
+  // Întrebarea trebuie să aparțină nivelului încercării. Examenul final
+  // (level_id null) acoperă toate nivelurile, deci acolo orice întrebare e validă.
+  if (attempt.level_id != null && question.level_id !== attempt.level_id) {
+    throw new Error("Întrebarea nu face parte din această încercare.");
   }
 
   const correct = (question.correct_answers as number[]) ?? [];
@@ -166,13 +181,20 @@ export async function finishAttempt(attemptId: number, reason: EndedReason) {
     throw new Error(`Nu am putut calcula scorul: ${answersError.message}`);
   }
 
-  const total = answers.length;
   const score = answers.filter((a) => a.is_correct).length;
 
-  // Doar testul și examenul au prag. Trecut doar dacă s-a terminat normal.
-  let passed: boolean | null = null;
+  // Totalul este dimensiunea testului (nu doar câte întrebări s-a răspuns),
+  // ca scorul să nu poată fi trecut răspunzând la o singură întrebare.
+  let total: number;
+  let passed: boolean | null;
   if (attempt.type === "level_test" || attempt.type === "final_exam") {
-    passed = reason === "completed" && total > 0 && score / total >= PASS_RATIO;
+    const testType: "level_test" | "final_exam" = attempt.type;
+    total = TEST_QUESTION_COUNT[testType];
+    passed = reason === "completed" && score >= Math.ceil(PASS_RATIO * total);
+  } else {
+    // Exersarea nu are prag de promovare.
+    total = answers.length;
+    passed = null;
   }
 
   const { error: updateError } = await supabase

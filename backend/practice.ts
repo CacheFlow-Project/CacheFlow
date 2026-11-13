@@ -1,8 +1,8 @@
 "use server";
 
 import { createClient } from "@/lib/supabase/server";
-import { createAdminClient } from "@/lib/supabase/admin";
 import { createAttempt, saveAnswer, finishAttempt } from "./attempts";
+import { markPracticeDone } from "./levels";
 
 const PRACTICE_QUESTION_COUNT = 10;
 
@@ -82,31 +82,8 @@ export async function finishPractice(attemptId: number) {
   const result = await finishAttempt(attemptId, "completed");
 
   if (attempt.level_id != null) {
-    await markPracticeDone(user.id, attempt.level_id as number);
+    await markPracticeDone(attempt.level_id as number);
   }
 
   return result;
-}
-
-/**
- * Marchează exersarea unui nivel ca terminată (în `level_progress`). Scrierea se
- * face prin service_role, ca progresul să nu poată fi falsificat din browser.
- */
-async function markPracticeDone(userId: string, levelId: number) {
-  const admin = createAdminClient();
-  const now = new Date().toISOString();
-
-  const { error } = await admin.from("level_progress").upsert(
-    {
-      user_id: userId,
-      level_id: levelId,
-      practice_done_at: now,
-      updated_at: now,
-    },
-    { onConflict: "user_id,level_id" },
-  );
-
-  if (error) {
-    throw new Error(`Nu am putut marca exersarea ca terminată: ${error.message}`);
-  }
 }

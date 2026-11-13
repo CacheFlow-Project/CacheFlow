@@ -1,217 +1,155 @@
+// Importă nivelurile, lecțiile și întrebările din content/level-*.json în Supabase (#47).
+// Rulare: npm run seed (citește .env.local). Cheia service_role se folosește doar local.
 import fs from "node:fs/promises";
 import path from "node:path";
 import { createClient } from "@supabase/supabase-js";
+import { validateLevel } from "../lib/content.ts";
+
+const MIN_QUESTIONS_PER_LEVEL = 30;
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-if (!supabaseUrl || !supabaseServiceRoleKey) {
-  throw new Error(
-    "Missing Supabase env vars. Add NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY to .env.local"
+if (!supabaseUrl || !serviceRoleKey) {
+  console.error(
+    "Lipsesc variabilele de mediu. Completează NEXT_PUBLIC_SUPABASE_URL și SUPABASE_SERVICE_ROLE_KEY în .env.local.",
   );
+  process.exit(1);
 }
 
-const supabase = createClient(supabaseUrl, supabaseServiceRoleKey, {
-  auth: {
-    persistSession: false,
-    autoRefreshToken: false,
-    detectSessionInUrl: false,
-  },
+const supabase = createClient(supabaseUrl, serviceRoleKey, {
+  auth: { persistSession: false, autoRefreshToken: false, detectSessionInUrl: false },
 });
 
-function assert(condition, message) {
-  if (!condition) {
-    throw new Error(message);
-  }
-}
+/** Citește și validează un fișier. La eroare spune fișierul și întrebarea problemă. */
+async function readLevelFile(contentDir, fileName) {
+  const text = await fs.readFile(path.join(contentDir, fileName), "utf8");
 
-function validateLevel(level) {
-  assert(level && typeof level === "object", "Level file is invalid");
-  assert(typeof level.position === "number", "Missing level.position");
-  assert(typeof level.title === "string", "Missing level.title");
-  assert(typeof level.description === "string", "Missing level.description");
-  assert(typeof level.tool === "string", "Missing level.tool");
-  assert(Array.isArray(level.lessons), "Missing level.lessons[]");
-  assert(Array.isArray(level.questions), "Missing level.questions[]");
-}
-
-function validateLesson(lesson) {
-  assert(typeof lesson.position === "number", "Lesson.position is required");
-  assert(typeof lesson.title === "string", "Lesson.title is required");
-  assert(typeof lesson.description === "string", "Lesson.description is required");
-}
-
-function validateQuestion(question) {
-  assert(typeof question.id === "string", "Question.id is required");
-  assert(typeof question.text === "string", "Question.text is required");
-  assert(Array.isArray(question.options), "Question.options must be an array");
-  assert(question.options.length >= 2, "Question must have at least 2 answers");
-  assert(Array.isArray(question.correct), "Question.correct must be an array");
-  assert(question.correct.length > 0, "Question must have at least 1 correct answer");
-  for (const index of question.correct) {
-    assert(
-      Number.isInteger(index) && index >= 0 && index < question.options.length,
-      `Invalid correct index: ${index}`
-    );
-  }
-  assert(typeof question.explanation === "string", "Question.explanation is required");
-}
-
-async function readJson(filePath) {
-  const text = await fs.readFile(filePath, "utf8");
+  let data;
   try {
-    return JSON.parse(text);
+    data = JSON.parse(text);
   } catch (error) {
-    throw new Error(`${filePath}: invalid JSON - ${error.message}`);
+    throw new Error(`${fileName}: JSON invalid – ${error.message}`);
+  }
+
+  const errors = validateLevel(data);
+  if (errors.length > 0) {
+    throw new Error(`${fileName} nu e valid:\n${errors.map((e) => `  - ${e}`).join("\n")}`);
+  }
+  return data;
+}
+
+/** Verifică ce nu se vede dintr-un singur fișier: niveluri sau id-uri de întrebări repetate. */
+function checkAcrossFiles(levelFiles) {
+  const levelFileByPosition = new Map();
+  const fileByQuestionId = new Map();
+  const errors = [];
+
+  for (const { fileName, level } of levelFiles) {
+    const other = levelFileByPosition.get(level.position);
+    if (other) errors.push(`${fileName}: nivelul ${level.position} apare și în ${other}.`);
+    levelFileByPosition.set(level.position, fileName);
+
+    for (const question of level.questions) {
+      const otherFile = fileByQuestionId.get(question.id);
+      if (otherFile) errors.push(`${fileName}: ${question.id} apare și în ${otherFile}.`);
+      fileByQuestionId.set(question.id, fileName);
+    }
+  }
+
+  if (errors.length > 0) {
+    throw new Error(`Conținutul nu e valid:\n${errors.map((e) => `  - ${e}`).join("\n")}`);
   }
 }
 
-async function ensureLevel(levelData) {
-  const { data: existing, error: existingError } = await supabase
+async function upsertLevel(level) {
+  const { data, error } = await supabase
     .from("levels")
-    .select("id")
-    .eq("position", levelData.position)
-    .maybeSingle();
-
-  if (existingError) throw existingError;
-
-  if (existing) return existing.id;
-
-  const { data: inserted, error: insertError } = await supabase
-    .from("levels")
-    .insert({
-      title: levelData.title,
-      description: levelData.description,
-      position: levelData.position,
-    })
+    .upsert(
+      { position: level.position, title: level.title, description: level.description },
+      { onConflict: "position" },
+    )
     .select("id")
     .single();
 
-  if (insertError) throw insertError;
-  return inserted.id;
+  if (error) throw new Error(`Nivelul ${level.position}: ${error.message}`);
+  return data.id;
 }
 
-async function ensureLesson(levelId, lessonData) {
-  const { data: existing, error: existingError } = await supabase
+async function upsertLessons(levelId, level) {
+  if (level.lessons.length === 0) return;
+
+  const rows = level.lessons.map((lesson) => ({
+    level_id: levelId,
+    position: lesson.position,
+    title: lesson.title,
+    content: lesson.description,
+  }));
+
+  const { error } = await supabase
     .from("lessons")
-    .select("id")
-    .eq("level_id", levelId)
-    .eq("position", lessonData.position)
-    .maybeSingle();
-
-  if (existingError) throw existingError;
-
-  if (existing) return existing.id;
-
-  const { data: inserted, error: insertError } = await supabase
-    .from("lessons")
-    .insert({
-      level_id: levelId,
-      title: lessonData.title,
-      content: lessonData.description,
-      position: lessonData.position,
-    })
-    .select("id")
-    .single();
-
-  if (insertError) throw insertError;
-  return inserted.id;
+    .upsert(rows, { onConflict: "level_id,position" });
+  if (error) throw new Error(`Lecțiile nivelului ${level.position}: ${error.message}`);
 }
 
-async function ensureQuestion(lessonId, question) {
-  const { data: existing, error: existingError } = await supabase
-    .from("questions")
-    .select("id")
-    .eq("stable_id", question.id)
-    .maybeSingle();
+// Întrebările se leagă de nivel. lesson_id nu se trimite: e opțional și o actualizare nu-l modifică.
+async function upsertQuestions(levelId, level) {
+  if (level.questions.length === 0) return;
 
-  if (existingError) throw existingError;
-
-  if (existing) {
-    const { error: updateError } = await supabase
-      .from("questions")
-      .update({
-        lesson_id: lessonId,
-        question_text: question.text,
-        options: question.options,
-        correct_answer: JSON.stringify(question.correct),
-        explanation: question.explanation,
-      })
-      .eq("id", existing.id);
-
-    if (updateError) throw updateError;
-    return;
-  }
-
-  const { error: insertError } = await supabase.from("questions").insert({
-    lesson_id: lessonId,
-    stable_id: question.id,
+  const rows = level.questions.map((question) => ({
+    external_id: question.id,
+    level_id: levelId,
     question_text: question.text,
     options: question.options,
-    correct_answer: JSON.stringify(question.correct),
+    correct_answers: question.correct,
     explanation: question.explanation,
-  });
+  }));
 
-  if (insertError) throw insertError;
+  const { error } = await supabase.from("questions").upsert(rows, { onConflict: "external_id" });
+  if (error) throw new Error(`Întrebările nivelului ${level.position}: ${error.message}`);
 }
 
 async function main() {
   const contentDir = path.join(process.cwd(), "content");
-  const files = (await fs.readdir(contentDir))
-    .filter((name) => name.endsWith(".json") && name.startsWith("level-"))
+  const fileNames = (await fs.readdir(contentDir))
+    .filter((name) => /^level-\d+\.json$/.test(name))
     .sort();
 
-  if (files.length === 0) {
-    throw new Error("No level JSON files found in content/.");
+  if (fileNames.length === 0) {
+    throw new Error("Nu există fișiere content/level-*.json.");
   }
 
-  const reports = [];
+  // Toate fișierele se validează înainte de import, ca o eroare să nu lase baza importată pe jumătate.
+  const levelFiles = [];
+  for (const fileName of fileNames) {
+    levelFiles.push({ fileName, level: await readLevelFile(contentDir, fileName) });
+  }
+  checkAcrossFiles(levelFiles);
 
-  for (const file of files) {
-    const fullPath = path.join(contentDir, file);
-    const payload = await readJson(fullPath);
-    validateLevel(payload);
-
-    for (const lesson of payload.lessons) {
-      validateLesson(lesson);
+  for (const { fileName, level } of levelFiles) {
+    if (level.questions.length < MIN_QUESTIONS_PER_LEVEL) {
+      console.warn(
+        `Atenție: ${fileName} are doar ${level.questions.length} întrebări (minimum ${MIN_QUESTIONS_PER_LEVEL} pentru testele repetate).`,
+      );
     }
-
-    for (const question of payload.questions) {
-      validateQuestion(question);
-    }
-
-    if (payload.questions.length < 30) {
-  console.warn(
-    `Warning: ${file} has only ${payload.questions.length} questions; repeated testing may not be reliable.`
-  );
-}
-
-    const levelId = await ensureLevel(payload);
-
-    for (const lesson of payload.lessons) {
-      const lessonId = await ensureLesson(levelId, lesson);
-
-      const questionsForLesson = payload.questions.filter((q) => {
-        return q.id.startsWith(`L${payload.position}-`);
-      });
-
-      for (const question of questionsForLesson) {
-        await ensureQuestion(lessonId, question);
-      }
-    }
-
-    const questionCount = payload.questions.length;
-    reports.push(`${file}: ${questionCount} întrebări`);
   }
 
-  console.log("Seed finalizat cu succes.");
-  for (const report of reports) {
-    console.log(report);
+  const report = [];
+  for (const { fileName, level } of levelFiles) {
+    const levelId = await upsertLevel(level);
+    await upsertLessons(levelId, level);
+    await upsertQuestions(levelId, level);
+    report.push(
+      `Nivelul ${level.position} (${fileName}): ${level.lessons.length} lecții, ${level.questions.length} întrebări`,
+    );
   }
+
+  console.log("Import finalizat.");
+  for (const line of report) console.log(`  ${line}`);
 }
 
 main().catch((error) => {
-  console.error("Seed failed:");
-  console.error(error.message || error);
+  console.error("Importul a eșuat:");
+  console.error(error instanceof Error ? error.message : error);
   process.exit(1);
 });

@@ -38,11 +38,7 @@
     {
       "id": "L1-Q03",
       "text": "Ce acțiuni te pot ajuta să urmărești cheltuielile?",
-      "options": [
-        "Să notezi cheltuielile",
-        "Să păstrezi bonurile",
-        "Să ignori cheltuielile mici"
-      ],
+      "options": ["Să notezi cheltuielile", "Să păstrezi bonurile", "Să ignori cheltuielile mici"],
       "correct": [0, 1],
       "explanation": "Notarea cheltuielilor și păstrarea bonurilor ajută la urmărirea banilor cheltuiți."
     }

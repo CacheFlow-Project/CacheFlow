@@ -1,0 +1,318 @@
+{
+  "lectii": [],
+  "intrebari": [
+    {
+      "nivel": 1,
+      "intrebare": "Ce înseamnă salariul net?",
+      "variante": [
+        "Suma scrisă în contract, înainte de taxe",
+        "Suma pe care o primești efectiv, după reținerea taxelor și contribuțiilor",
+        "Suma care îți rămâne după ce plătești chiria"
+      ],
+      "corecte": [1],
+      "explicatie": "Netul este suma care ajunge efectiv la tine, „în mână”. Suma din contract este de obicei salariul brut, din care se rețin contribuțiile și impozitul."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Ce se reține, de obicei, din salariul brut al unui angajat? Bifează toate variantele corecte.",
+      "variante": [
+        "Contribuția la pensie (CAS)",
+        "TVA-ul",
+        "Contribuția la sănătate (CASS)",
+        "Impozitul pe venit"
+      ],
+      "corecte": [0, 2, 3],
+      "explicatie": "Din brut se rețin CAS, CASS și impozitul pe venit. TVA-ul nu se reține din salariu: îl plătești când cumperi produse și servicii."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Salariul tău brut este 5.000 lei și nu ai deducere personală. Cât primești net?",
+      "variante": ["3.250 lei", "2.750 lei", "2.925 lei", "4.500 lei"],
+      "corecte": [2],
+      "explicatie": "CAS (25%) = 1.250 lei și CASS (10%) = 500 lei, deci rămân 3.250 lei. Impozitul de 10% se calculează din acești 3.250 lei, adică 325 lei, iar netul este 2.925 lei. Varianta de 2.750 lei apare dacă iei impozitul direct din brut, o greșeală foarte des întâlnită."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Salariul tău brut este 4.000 lei și nu ai deducere personală. Cât este impozitul pe venit?",
+      "variante": ["260 lei", "400 lei", "300 lei"],
+      "corecte": [0],
+      "explicatie": "Întâi se scad CAS (1.000 lei) și CASS (400 lei), iar baza rămasă este 2.600 lei. Impozitul este 10% din 2.600, adică 260 lei, nu 10% din brut (400 lei)."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Ce este o cheltuială variabilă?",
+      "variante": [
+        "O cheltuială a cărei sumă se schimbă de la o lună la alta",
+        "O cheltuială care are aceeași sumă în fiecare lună",
+        "O cheltuială pe care o plătești o singură dată în viață"
+      ],
+      "corecte": [0],
+      "explicatie": "Cheltuielile variabile, cum ar fi mâncarea sau ieșirile, au sume diferite de la o lună la alta. Cele cu aceeași sumă în fiecare lună sunt cheltuieli fixe."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Care dintre aceste cheltuieli sunt, de obicei, variabile? Bifează toate variantele corecte.",
+      "variante": [
+        "Mâncarea",
+        "Chiria stabilită în contract",
+        "Drumurile cu taxiul",
+        "Ieșirile cu prietenii"
+      ],
+      "corecte": [0, 2, 3],
+      "explicatie": "Mâncarea, taxiul și ieșirile depind de alegerile tale din fiecare lună. Chiria din contract are aceeași sumă lunar, deci e o cheltuială fixă."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Abonamentul tău de telefon costă 50 lei, aceeași sumă în fiecare lună. Ce fel de cheltuială este?",
+      "variante": ["Variabilă", "Neprevăzută", "Fixă"],
+      "corecte": [2],
+      "explicatie": "O sumă care se repetă la fel în fiecare lună este o cheltuială fixă. Neprevăzută ar fi, de exemplu, un ecran spart."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "De ce e util să știi totalul cheltuielilor fixe? Bifează toate variantele corecte.",
+      "variante": [
+        "Știi dinainte suma minimă de care ai nevoie în fiecare lună",
+        "Cheltuielile fixe nu mai trebuie trecute în buget",
+        "Vezi câți bani rămân pentru celelalte cheltuieli",
+        "Le poți sări în lunile grele fără nicio problemă"
+      ],
+      "corecte": [0, 2],
+      "explicatie": "Cheltuielile fixe sunt baza bugetului: știi cât trebuie să acoperi sigur și cât îți rămâne pentru rest. Ele trebuie trecute în buget și plătite la timp, chiar și în lunile grele."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Care dintre acestea este o nevoie?",
+      "variante": [
+        "Un telefon nou, deși cel vechi merge bine",
+        "Un abonament la o platformă de filme",
+        "Haine de firmă",
+        "Mâncarea pentru săptămâna asta"
+      ],
+      "corecte": [3],
+      "explicatie": "Nevoile sunt lucrurile fără de care nu te descurci, ca mâncarea. Celelalte sunt dorințe: plăcute, dar poți trăi fără ele."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Care dintre acestea sunt dorințe, nu nevoi? Bifează toate variantele corecte.",
+      "variante": [
+        "Mâncarea comandată acasă în fiecare seară",
+        "Factura la curent",
+        "Căști wireless noi",
+        "Medicamentele prescrise de medic"
+      ],
+      "corecte": [0, 2],
+      "explicatie": "Mâncarea comandată zilnic și căștile noi sunt dorințe. Curentul și medicamentele prescrise sunt nevoi, pe care le plătești primele."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Ai nevoie de o geacă de iarnă. Una bună costă 200 lei, iar una de firmă 600 lei. Dacă o iei pe cea de 600 lei, ce parte din preț acoperă nevoia?",
+      "variante": [
+        "Toți cei 600 lei, pentru că geaca e necesară",
+        "Cam 200 lei; ceilalți 400 lei țin de dorință",
+        "Nimic, hainele sunt mereu o dorință"
+      ],
+      "corecte": [1],
+      "explicatie": "Nevoia este să ai o geacă caldă, iar asta costă cam 200 lei. Diferența plătită pentru firmă este o dorință, și e bine să o vezi așa când faci bugetul."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Luna asta banii nu ajung pentru tot. Ce cheltuieli ar trebui să păstrezi? Bifează toate variantele corecte.",
+      "variante": [
+        "Chiria",
+        "Abonamentul la platforma de filme",
+        "Mâncarea de bază",
+        "Factura la curent"
+      ],
+      "corecte": [0, 2, 3],
+      "explicatie": "Când banii nu ajung, păstrezi nevoile (locuința, mâncarea, utilitățile) și tai mai întâi din dorințe, cum e abonamentul la filme."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Cum calculezi soldul bugetului lunar?",
+      "variante": [
+        "Venituri + cheltuieli",
+        "Cheltuieli − economii",
+        "Venituri − cheltuieli",
+        "Salariul brut − chiria"
+      ],
+      "corecte": [2],
+      "explicatie": "Soldul arată ce rămâne după ce scazi toate cheltuielile din toate veniturile. Folosește venitul net, pentru că acela ajunge efectiv la tine."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Venitul tău net este 3.000 lei. Cheltuieli: chirie 1.200 lei, utilități 300 lei, mâncare 800 lei, transport 150 lei și alte cheltuieli 250 lei. Cât este soldul la final de lună?",
+      "variante": ["500 lei", "300 lei", "1.800 lei", "−300 lei"],
+      "corecte": [1],
+      "explicatie": "Cheltuielile adunate fac 2.700 lei, iar 3.000 − 2.700 = 300 lei. Varianta de 1.800 lei apare dacă scazi doar chiria și uiți restul cheltuielilor."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "La final de lună, soldul bugetului tău este negativ. Ce înseamnă asta?",
+      "variante": [
+        "Ai cheltuit mai mult decât ai câștigat",
+        "Ai economisit mai mult decât ți-ai propus",
+        "Ai primit o sumă în plus"
+      ],
+      "corecte": [0],
+      "explicatie": "Sold negativ înseamnă că cheltuielile au fost mai mari decât veniturile. E un semnal util: îți arată unde trebuie să ajustezi luna viitoare."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Bugetul tău are sold negativ. Ce poți face ca să-l echilibrezi? Bifează toate variantele corecte.",
+      "variante": [
+        "Reduci cheltuielile cu dorințele",
+        "Cauți un venit în plus, de exemplu ore suplimentare",
+        "Ignori diferența, pentru că se rezolvă singură",
+        "Compari prețurile înainte de cumpărături"
+      ],
+      "corecte": [0, 1, 3],
+      "explicatie": "Poți echilibra bugetul cheltuind mai puțin sau câștigând mai mult. Diferența ignorată nu dispare, ci se adună de la o lună la alta."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Ce înseamnă, pe scurt, regula 50/30/20?",
+      "variante": [
+        "50% economii, 30% dorințe, 20% nevoi",
+        "50% chirie, 30% mâncare, 20% transport",
+        "50% pentru tine, 30% pentru familie, 20% pentru prieteni",
+        "50% nevoi, 30% dorințe, 20% economii"
+      ],
+      "corecte": [3],
+      "explicatie": "O regulă des folosită recomandă să împarți venitul net așa: jumătate pentru nevoi, 30% pentru dorințe și 20% pentru economii. E un punct de pornire, nu o obligație."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Venitul tău net este 3.000 lei pe lună. Dacă urmezi regula 50/30/20, cât ar merge la economii?",
+      "variante": ["600 lei", "300 lei", "900 lei", "1.500 lei"],
+      "corecte": [0],
+      "explicatie": "20% din 3.000 lei înseamnă 600 lei. 900 lei ar fi partea pentru dorințe (30%), iar 1.500 lei partea pentru nevoi (50%)."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Ce este regula 50/30/20?",
+      "variante": [
+        "O lege pe care trebuie să o respecți",
+        "O regulă impusă de bănci ca să-ți dea card",
+        "O regulă valabilă doar pentru cei cu salarii mari",
+        "O recomandare des folosită, pe care o poți adapta situației tale"
+      ],
+      "corecte": [3],
+      "explicatie": "Regula 50/30/20 este un sfat, nu o lege. O poți adapta: dacă ai chirie mare, procentele se schimbă, iar important e să ai un plan."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Venitul tău net este 3.000 lei. Chiria e 1.200 lei, utilitățile 300 lei, iar mâncarea de bază 600 lei. Ce observi față de regula 50/30/20?",
+      "variante": [
+        "Nevoile ajung la 70% din venit, peste cei 50% recomandați",
+        "Nevoile sunt exact 50% din venit, cum recomandă regula",
+        "Nevoile sunt 30% din venit, deci rămâne mult pentru dorințe"
+      ],
+      "corecte": [0],
+      "explicatie": "Nevoile fac 2.100 lei, adică 70% din 3.000 lei. Se întâmplă des la prima chirie; ajustezi dorințele și pui deoparte cât poți, chiar și o sumă mică."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "De ce e util să păstrezi bonurile timp de o lună?",
+      "variante": [
+        "Ca să vezi exact pe ce s-au dus banii",
+        "Pentru că proprietarul le cere la sfârșitul lunii",
+        "Ca să știi cât ai în cont fără să verifici"
+      ],
+      "corecte": [0],
+      "explicatie": "Bonurile îți arată pe ce ai cheltuit, inclusiv sumele mici pe care le uiți ușor. Așa vezi clar unde poți economisi."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Ce informații e bine să notezi pentru fiecare cheltuială? Bifează toate variantele corecte.",
+      "variante": [
+        "Suma",
+        "Data",
+        "Categoria (de exemplu mâncare, transport, distracție)",
+        "Prețul aceluiași produs în toate magazinele din oraș"
+      ],
+      "corecte": [0, 1, 2],
+      "explicatie": "Suma, data și categoria sunt suficiente ca să vezi la final de lună unde s-au dus banii. Nu trebuie să compari fiecare produs în toate magazinele ca să-ți urmărești cheltuielile."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Ai notat cheltuielile o lună și vezi că ai dat 400 lei pe cafele și gustări. Care este cel mai util pas următor?",
+      "variante": [
+        "Să nu mai notezi, ca să nu te stresezi",
+        "Să te împrumuți ca să acoperi diferența",
+        "Să stabilești o sumă lunară pentru ele și să o urmărești",
+        "Să renunți complet la ele, chiar dacă știi că nu vei rezista"
+      ],
+      "corecte": [2],
+      "explicatie": "O limită realistă, pe care o urmărești, funcționează mai bine decât o interdicție totală pe care nu o poți respecta. Notițele și-au făcut treaba: ți-au arătat unde poți ajusta."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Care dintre acestea sunt facturi care vin, de obicei, lunar într-o locuință închiriată? Bifează toate variantele corecte.",
+      "variante": ["Curentul", "Gazul sau încălzirea", "Garanția pentru chirie", "Internetul"],
+      "corecte": [0, 1, 3],
+      "explicatie": "Curentul, încălzirea și internetul vin lunar. Garanția se plătește, de obicei, o singură dată, la mutare."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Ce ar trebui să scrie în contractul de închiriere? Bifează toate variantele corecte.",
+      "variante": [
+        "Programul tău de lucru",
+        "Valoarea chiriei și data plății",
+        "Cine plătește utilitățile",
+        "Valoarea garanției și când se returnează"
+      ],
+      "corecte": [1, 2, 3],
+      "explicatie": "Contractul trebuie să clarifice banii: chiria, data plății, utilitățile și garanția. Programul tău de lucru nu ține de închiriere."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Proprietarul îți cere o garanție de 1.200 lei la mutare. Ce este, de obicei, garanția?",
+      "variante": [
+        "O taxă pe care nu o mai primești înapoi niciodată",
+        "O sumă păstrată de proprietar pentru eventuale daune sau chirii neplătite, returnată la final în condițiile din contract",
+        "O chirie în plus pentru prima lună"
+      ],
+      "corecte": [1],
+      "explicatie": "Garanția te protejează și pe tine, și pe proprietar: dacă predai locuința în regulă, o primești înapoi conform contractului. De aceea e bine să faci poze la mutare."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Chiria este 1.200 lei, iar contractul spune că utilitățile se plătesc separat. În ianuarie vin facturile: încălzire 250 lei, curent 120 lei, apă 80 lei și internet 50 lei. Cât te costă locuința în ianuarie?",
+      "variante": ["1.200 lei", "1.450 lei", "1.700 lei", "1.650 lei"],
+      "corecte": [2],
+      "explicatie": "Utilitățile fac 250 + 120 + 80 + 50 = 500 lei, iar cu chiria totalul e 1.700 lei. Iarna facturile cresc, așa că e bine să le prevezi din timp în buget."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Care dintre acestea pot fi cheltuieli neprevăzute? Bifează toate variantele corecte.",
+      "variante": [
+        "Ți se strică telefonul",
+        "Ai nevoie de medicamente când răcești",
+        "Plata chiriei la data din contract",
+        "Se strică mașina de spălat"
+      ],
+      "corecte": [0, 1, 3],
+      "explicatie": "Defecțiunile și bolile apar fără să le poți planifica. Chiria are o dată știută dinainte, deci nu e o cheltuială neprevăzută."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Ce este un fond de urgență?",
+      "variante": [
+        "Bani pentru vacanța de vară",
+        "Bani puși deoparte pentru situații neașteptate, ca o reparație sau o boală",
+        "Un împrumut rapid pe care îl iei când rămâi fără bani",
+        "Banii pe care îi cheltuiești în weekend"
+      ],
+      "corecte": [1],
+      "explicatie": "Fondul de urgență sunt banii tăi, puși deoparte pentru neprevăzut. Se recomandă să-l ai, ca să nu fie nevoie de un împrumut când apare o problemă."
+    },
+    {
+      "nivel": 1,
+      "intrebare": "Un sfat des întâlnit este să ai un fond de urgență care să acopere cheltuielile pe câteva luni, de exemplu 3. Cheltuielile tale lunare sunt 2.500 lei și pui deoparte 250 lei pe lună. În câte luni strângi fondul pentru 3 luni?",
+      "variante": ["10 luni", "3 luni", "12 luni", "30 de luni"],
+      "corecte": [3],
+      "explicatie": "Pentru 3 luni ai nevoie de 3 × 2.500 = 7.500 lei, iar 7.500 : 250 = 30 de luni. Pare mult, dar fiecare lună contează; poți începe cu o țintă mai mică, de exemplu o lună de cheltuieli."
+    }
+  ]
+}

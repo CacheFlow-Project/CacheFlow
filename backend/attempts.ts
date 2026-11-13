@@ -34,9 +34,11 @@ async function requireUserId(): Promise<string> {
  */
 export async function createAttempt(type: AttemptType, levelId?: number) {
   const userId = await requireUserId();
-  const supabase = await createClient();
+  // Scrierile în tabelele de rezultate se fac doar de pe server (service_role),
+  // ca userul să nu poată insera/modifica direct din browser. user_id vine din sesiune.
+  const admin = createAdminClient();
 
-  const { data, error } = await supabase
+  const { data, error } = await admin
     .from("quiz_attempts")
     .insert({
       user_id: userId,
@@ -102,8 +104,9 @@ export async function saveAnswer(attemptId: number, questionId: number, selected
   const uniqueSelected = [...new Set(selected)];
   const isCorrect = isExactMatch(uniqueSelected, correct);
 
-  // 3. Salvăm răspunsul (upsert pe încercare+întrebare). RLS verifică proprietatea.
-  const { error: answerError } = await supabase.from("attempt_answers").upsert(
+  // 3. Salvăm răspunsul prin service_role (is_correct nu trebuie scris din browser).
+  //    Proprietatea e deja verificată mai sus prin citirea încercării cu clientul de sesiune.
+  const { error: answerError } = await admin.from("attempt_answers").upsert(
     {
       attempt_id: attemptId,
       question_id: questionId,
@@ -129,7 +132,7 @@ export async function saveAnswer(attemptId: number, questionId: number, selected
       .maybeSingle();
 
     if (!existing) {
-      const { error: wrongError } = await supabase.from("wrong_answers").insert({
+      const { error: wrongError } = await admin.from("wrong_answers").insert({
         user_id: userId,
         attempt_id: attemptId,
         question_id: questionId,
@@ -157,8 +160,10 @@ export async function saveAnswer(attemptId: number, questionId: number, selected
  * și motivul încheierii. O încercare încheiată nu mai poate fi modificată.
  */
 export async function finishAttempt(attemptId: number, reason: EndedReason) {
+  const userId = await requireUserId();
   const supabase = await createClient();
 
+  // Citim încercarea cu clientul de sesiune — RLS garantează că e a userului.
   const { data: attempt, error: attemptError } = await supabase
     .from("quiz_attempts")
     .select("id, type, finished_at")
@@ -197,7 +202,10 @@ export async function finishAttempt(attemptId: number, reason: EndedReason) {
     passed = null;
   }
 
-  const { error: updateError } = await supabase
+  // Scrierea scorului se face prin service_role (score/passed nu trebuie scrise din
+  // browser). `user_id` explicit, fiindcă service_role ocolește RLS.
+  const admin = createAdminClient();
+  const { error: updateError } = await admin
     .from("quiz_attempts")
     .update({
       finished_at: new Date().toISOString(),
@@ -207,6 +215,7 @@ export async function finishAttempt(attemptId: number, reason: EndedReason) {
       passed,
     })
     .eq("id", attemptId)
+    .eq("user_id", userId)
     .is("finished_at", null);
 
   if (updateError) {

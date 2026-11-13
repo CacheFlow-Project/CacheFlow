@@ -255,3 +255,37 @@ Regulile complete (board, Definition of Done, Git, daily, retrospectivă, calend
 - [Board Kanban](https://github.com/orgs/CacheFlow-Project/projects/1)
 - [Issues](https://github.com/CacheFlow-Project/CacheFlow/issues)
 - [Milestones](https://github.com/CacheFlow-Project/CacheFlow/milestones)
+
+## Autentificare (Supabase Auth)
+
+**Setări în dashboard Supabase (Authentication):**
+
+- **Provider:** email + parolă (activat).
+- **Confirmare email:** oprită pentru demo.
+- **Site URL:** `http://localhost:3000` (se schimbă cu linkul de test când este disponibil).
+- **Redirect URLs:**
+  - `http://localhost:3000/**`
+  - linkul de test `/**` (de adăugat când avem linkul de test)
+
+**Crearea automată a profilului:**
+
+- Trigger-ul `on_auth_user_created` (pe `auth.users`, la insert) apelează funcția `handle_new_user()`, care creează rândul în `public.profiles`.
+- Username-ul se trimite la înregistrare în metadata:
+
+```ts
+  supabase.auth.signUp({
+    email,
+    password,
+    options: { data: { username } },
+  });
+```
+
+- Dacă username-ul lipsește, se generează unul din email.
+- Username-ul este unic: dacă e deja folosit, înregistrarea eșuează.
+
+**Securitate (RLS pe `profiles`):**
+
+- Fiecare utilizator poate citi și modifica doar propriul profil.
+- Nu poate insera sau șterge profiluri din browser; crearea se face doar prin trigger.
+
+Migrația: `supabase/migrations/20261113120000_auth_profile_trigger.sql`.

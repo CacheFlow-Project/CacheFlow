@@ -12,7 +12,8 @@
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "seed": "node --env-file=.env.local --disable-warning=MODULE_TYPELESS_PACKAGE_JSON backend/seed.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "0.12.7",

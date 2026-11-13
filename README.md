@@ -142,21 +142,102 @@ supabase/
 Folderele goale sunt create de la început (criteriul de structură din #1) și se
 populează la tichetele corespunzătoare.
 
-## Formatul conținutului
+## Schema bazei de date
 
-Lecțiile și întrebările se scriu în fișiere JSON în `content/` și se încarcă în Supabase printr-un script de seed ([#47](https://github.com/CacheFlow-Project/CacheFlow/issues/47)). Formatul final se stabilește în [#2](https://github.com/CacheFlow-Project/CacheFlow/issues/2). Propunerea de pornire arată așa:
-
-```json
-{
-  "nivel": 1,
-  "intrebare": "Ce ar trebui să incluzi în bugetul lunar pe lângă chirie?",
-  "variante": ["Utilități", "Abonamentul la sală", "Mâncare", "Fond de urgență"],
-  "corecte": [0, 2, 3],
-  "explicatie": "Utilitățile, mâncarea și economiile sunt cheltuieli esențiale; sala e opțională."
-}
+```mermaid
+erDiagram
+  profiles ||--o{ user_progress : has
+  profiles ||--o{ quiz_attempts : makes
+  levels ||--o{ lessons : contains
+  lessons ||--o{ questions : contains
+  lessons ||--o{ user_progress : tracked_in
+  lessons ||--o{ quiz_attempts : for
+  quiz_attempts ||--o{ wrong_answers : has
+  questions ||--o{ wrong_answers : missed_in
 ```
 
+| Tabel         | Rol                                        |
+| ------------- | ------------------------------------------ |
+| profiles      | Datele utilizatorului, legat de auth.users |
+| levels        | Nivelurile aplicației, în ordine           |
+| lessons       | Lecțiile dintr-un nivel                    |
+| questions     | Întrebările unei lecții                    |
+| user_progress | Ce lecții a terminat fiecare utilizator    |
+| quiz_attempts | Încercările de quiz și scorul              |
+| wrong_answers | Răspunsurile greșite dintr-o încercare     |
+
+Migrațiile se găsesc în `supabase/migrations`.
+
+## Formatul conținutului
+
+Exemplele de lecții și întrebări sunt în `content/example.json`. Fișierele de conținut folosesc JSON, cu două liste: `lectii` și `intrebari`.
+
+### Lecții
+
+Fiecare lecție conține:
+
+- `nivel`: numărul nivelului, de la 1 la 4;
+- `titlu`: titlul lecției;
+- `link_video`: linkul video al lecției;
+- `descriere`: o scurtă descriere a lecției.
+
+### Întrebări
+
+Fiecare întrebare conține:
+
+- `nivel`: numărul nivelului, de la 1 la 4;
+- `intrebare`: textul întrebării;
+- `variante`: lista variantelor de răspuns;
+- `corecte`: lista pozițiilor variantelor corecte, numerotate de la `0`;
+- `explicatie`: explicația răspunsului.
+
+`corecte` poate conține una sau mai multe poziții. De exemplu, `[0, 2]` înseamnă că prima și a treia variantă sunt corecte. Răspunsul este corect numai dacă variantele selectate coincid exact cu toate variantele corecte.
+
 Cu pragul de 90%, fiecare nivel are nevoie de **cel puțin 30 de întrebări** în bancă, ca testele repetate să primească întrebări diferite. Fiecare întrebare e verificată de tester și aprobată de Product Owner înainte să intre în aplicație.
+
+## Design comun (#3)
+
+Toate ecranele folosesc aceeași paletă, același font și componentele din `components/`.
+Pagina `/demo` le arată pe toate, cu date din `content/example.json`.
+
+### Fonturi
+
+- **Geist** pentru tot textul aplicației (inclusiv diacriticele ă, â, î, ș, ț).
+- **Geist Mono** doar pentru cifre sau cod, dacă e nevoie (`font-mono`).
+
+Fonturile se încarcă prin `next/font/google` în `app/layout.tsx`, deci nu depind de
+fonturile instalate pe telefon.
+
+### Paleta de culori
+
+Culorile sunt definite o singură dată în `app/globals.css` și se folosesc ca clase Tailwind
+(ex. `bg-primary`, `text-correct`, `bg-wrong-soft`). Nu se scriu culori hex direct în componente.
+
+| Rol                   | Clasă Tailwind                           | Luminos               | Întunecat             |
+| --------------------- | ---------------------------------------- | --------------------- | --------------------- |
+| Fundal pagină / text  | `bg-background` / `text-foreground`      | `#ffffff` / `#171717` | `#0a0a0a` / `#ededed` |
+| Fundal card / margine | `bg-surface` / `border-border`           | `#ffffff` / `#e5e5e5` | `#171717` / `#2e2e2e` |
+| Text secundar         | `text-muted`                             | `#525252`             | `#a3a3a3`             |
+| Acțiune principală    | `bg-primary` + `text-primary-foreground` | `#1d4ed8`             | `#60a5fa`             |
+| Disponibil (fundal)   | `bg-primary-soft`                        | `#dbeafe`             | `#172554`             |
+| Corect / trecut       | `text-correct` / `bg-correct-soft`       | `#15803d` / `#dcfce7` | `#4ade80` / `#052e16` |
+| Greșit                | `text-wrong` / `bg-wrong-soft`           | `#b91c1c` / `#fee2e2` | `#f87171` / `#450a0a` |
+| Blocat                | `text-locked` / `bg-locked-soft`         | `#525252` / `#f5f5f5` | `#a3a3a3` / `#262626` |
+
+Modul întunecat se aplică automat după setarea telefonului. Toate perechile text/fundal au
+contrast de minimum 4.5:1 (WCAG AA).
+
+### Componente
+
+| Componentă       | Fișier                          | La ce folosește                                         |
+| ---------------- | ------------------------------- | ------------------------------------------------------- |
+| `Button`         | `components/Button.tsx`         | Butoane; variantele `primary` și `secondary`            |
+| `Card`           | `components/Card.tsx`           | Container cu margine pentru conținut                    |
+| `ProgressBar`    | `components/ProgressBar.tsx`    | Progres 0–100, accesibil (`role="progressbar"`)         |
+| `StatusBadge`    | `components/StatusBadge.tsx`    | Starea unui nivel: blocat / disponibil / trecut         |
+| `AnswerFeedback` | `components/AnswerFeedback.tsx` | Mesajul „Corect!” / „Greșit!” cu explicația răspunsului |
+
+Ecranele sunt gândite mobile first și se verifică de la 360 px lățime în sus.
 
 ## Cum lucrăm
 

@@ -168,30 +168,59 @@ erDiagram
 
 Migrațiile se găsesc în `supabase/migrations`.
 
-## Formatul conținutului
+## Formatul conținutului (#2)
 
-Exemplele de lecții și întrebări sunt în `content/example.json`. Fișierele de conținut folosesc JSON, cu două liste: `lectii` și `intrebari`.
+Conținutul fiecărui nivel stă într-un fișier `content/level-N.json` (N de la 1 la 4). Exemplu: `content/level-1.json`. Tipul TypeScript și funcția de validare sunt în `lib/content.ts`.
 
-### Lecții
+### Nivel
 
-Fiecare lecție conține:
+- `position`: numărul nivelului, de la 1 la 4;
+- `title`: titlul nivelului;
+- `description`: o scurtă descriere;
+- `tool`: instrumentul nivelului, ex. `buget-personal`;
+- `lessons`: lista lecțiilor;
+- `questions`: lista întrebărilor.
 
-- `nivel`: numărul nivelului, de la 1 la 4;
-- `titlu`: titlul lecției;
-- `link_video`: linkul video al lecției;
-- `descriere`: o scurtă descriere a lecției.
+### Lecție
 
-### Întrebări
+- `position`: ordinea lecției în nivel, de la 1;
+- `title`: titlul lecției;
+- `video_url`: linkul video;
+- `duration_sec`: durata în secunde;
+- `description`: o scurtă descriere.
 
-Fiecare întrebare conține:
+### Întrebare
 
-- `nivel`: numărul nivelului, de la 1 la 4;
-- `intrebare`: textul întrebării;
-- `variante`: lista variantelor de răspuns;
-- `corecte`: lista pozițiilor variantelor corecte, numerotate de la `0`;
-- `explicatie`: explicația răspunsului.
+- `id`: id stabil, ex. `L1-Q07`. Nu se schimbă după import, pentru că după el se actualizează întrebarea în baza de date;
+- `text`: textul întrebării;
+- `options`: lista variantelor de răspuns (minimum 2);
+- `correct`: lista pozițiilor variantelor corecte, numerotate de la `0`;
+- `explanation`: explicația răspunsului.
 
-`corecte` poate conține una sau mai multe poziții. De exemplu, `[0, 2]` înseamnă că prima și a treia variantă sunt corecte. Răspunsul este corect numai dacă variantele selectate coincid exact cu toate variantele corecte.
+`correct` poate conține una sau mai multe poziții. De exemplu, `[0, 2]` înseamnă că prima și a treia variantă sunt corecte. Răspunsul este corect numai dacă variantele selectate coincid exact cu toate variantele corecte.
+
+> `content/example.json` folosește formatul vechi (`lectii`, `intrebari`) și e încă citit de `/demo` și de ecranul de exersare. Rămâne până când aceste ecrane citesc întrebările din baza de date.
+
+## Importul conținutului în Supabase (#47)
+
+Scriptul `backend/seed.mjs` încarcă nivelurile, lecțiile și întrebările din `content/level-*.json` în baza de date.
+
+1. În `.env.local` completează `NEXT_PUBLIC_SUPABASE_URL` și `SUPABASE_SERVICE_ROLE_KEY` (Supabase → Project Settings → API keys). Cheia `service_role` rămâne doar local și nu se comite.
+2. Verifică că migrațiile din `supabase/migrations/` sunt aplicate pe baza de date.
+3. Rulează:
+
+```bash
+npm run seed
+```
+
+Ce face scriptul:
+
+- validează toate fișierele înainte de import; la eroare afișează fișierul și întrebarea problemă și nu importă nimic;
+- actualizează după `position` (nivel), `level_id` + `position` (lecție) și `id` (întrebare, salvat în `external_id`), deci rularea repetată nu creează duplicate și preia textele modificate;
+- avertizează dacă un nivel are sub 30 de întrebări;
+- afișează la final câte lecții și întrebări are fiecare nivel.
+
+Întrebările șterse dintr-un fișier JSON nu se șterg din baza de date.
 
 Cu pragul de 90%, fiecare nivel are nevoie de **cel puțin 30 de întrebări** în bancă, ca testele repetate să primească întrebări diferite. Fiecare întrebare e verificată de tester și aprobată de Product Owner înainte să intre în aplicație.
 

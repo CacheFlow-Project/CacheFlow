@@ -2,7 +2,7 @@
 
 import { createClient } from "@/lib/supabase/server";
 import { createAttempt, saveAnswer, finishAttempt } from "./attempts";
-import { markPracticeDone } from "./levels";
+import { markPracticeDone } from "./level-progress";
 
 const PRACTICE_QUESTION_COUNT = 10;
 
@@ -82,7 +82,7 @@ export async function finishPractice(attemptId: number) {
   const result = await finishAttempt(attemptId, "completed");
 
   if (attempt.level_id != null) {
-    await markPracticeDone(attempt.level_id as number);
+    await markPracticeDone(user.id, attempt.level_id as number);
   }
 
   return result;

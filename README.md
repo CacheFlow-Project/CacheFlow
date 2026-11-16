@@ -34,21 +34,21 @@ Fiecare nivel are:
 2. **Chestionar de exersare**: grilă cu unul sau mai multe răspunsuri corecte, cu explicație imediată după fiecare răspuns. Fără prag, aici greșelile sunt binevenite.
 3. **Un instrument interactiv**:
 
-   | Nivel | Instrument |
-   |---|---|
-   | 1. Bugetul personal | Simulatorul de buget lunar: venit, chirie, facturi, mâncare, cheltuieli neprevăzute |
-   | 2. Economii și urgențe | Jocul de decizii („chirie singur sau cu colegi?”), cu raport final despre consecințe |
-   | 3. Taxe și salariu | Calculatorul „câte ore de muncă costă” un obiect |
-   | 4. Investiții și dobândă | Vizualizatorul de dobândă compusă (18 vs. 30 de ani) și simulatorul de inflație |
+   | Nivel                    | Instrument                                                                           |
+   | ------------------------ | ------------------------------------------------------------------------------------ |
+   | 1. Bugetul personal      | Simulatorul de buget lunar: venit, chirie, facturi, mâncare, cheltuieli neprevăzute  |
+   | 2. Economii și urgențe   | Jocul de decizii („chirie singur sau cu colegi?”), cu raport final despre consecințe |
+   | 3. Taxe și salariu       | Calculatorul „câte ore de muncă costă” un obiect                                     |
+   | 4. Investiții și dobândă | Vizualizatorul de dobândă compusă (18 vs. 30 de ani) și simulatorul de inflație      |
 
 Un nivel e **studiat** după ce ai văzut lecțiile și ai terminat exersarea. Atunci se deschide nivelul următor din Studiu și testul acelui nivel din Examen.
 
 ### 2. Examen
 
-| Ce | Reguli | Prag |
-|---|---|---|
-| **Test de nivel** (câte unul pentru fiecare nivel studiat) | 10 întrebări aleatorii, fără limită de timp, explicațiile la final | **90%**: minimum 9/10 |
-| **Examen final** (după ce treci toate cele 4 teste) | 20 de întrebări (5 din fiecare nivel), 25 de minute, se oprește la a 3-a greșeală | **90%**: minimum 18/20 |
+| Ce                                                         | Reguli                                                                            | Prag                   |
+| ---------------------------------------------------------- | --------------------------------------------------------------------------------- | ---------------------- |
+| **Test de nivel** (câte unul pentru fiecare nivel studiat) | 10 întrebări aleatorii, fără limită de timp, explicațiile la final                | **90%**: minimum 9/10  |
+| **Examen final** (după ce treci toate cele 4 teste)        | 20 de întrebări (5 din fiecare nivel), 25 de minute, se oprește la a 3-a greșeală | **90%**: minimum 18/20 |
 
 Dacă pici, reiei cu alte întrebări din bancă. Întrebările greșite ajung în lista **„Întrebările mele greșite”**, pe care o poți relua oricând. La final primești un raport și un certificat.
 
@@ -68,14 +68,14 @@ Un instrument pentru banii reali ai utilizatorului, separat de simulatorul din N
 
 ## Echipa
 
-| Rol | Membri | Ce face |
-|---|---|---|
-| Product Owner | Nițan Ioana | ce se construiește și în ce ordine, conținutul |
-| Scrum Master | Perșa Diana-Alexandra | ritmul echipei, board-ul, deblocarea problemelor; ajută la backend |
-| Frontend | Putanu Elena-Florina, Vălcan Georgiana-Ana | ecranele, design-ul comun, instrumentele interactive |
-| Backend | Leaț Elena Anabela, Stoina Alexia Fanuria | logica de server (Server Actions): chestionare, teste, progres, buget |
-| Database | Popa Miruna Andreea, Nodiș Bianca-Loredana | Supabase: schema, migrațiile, Row Level Security, autentificarea, stocarea |
-| Tester / QA | Mranovatz Brigitte | cazuri de test, verificarea fiecărui task, verificarea întrebărilor |
+| Rol           | Membri                                     | Ce face                                                                    |
+| ------------- | ------------------------------------------ | -------------------------------------------------------------------------- |
+| Product Owner | Nițan Ioana                                | ce se construiește și în ce ordine, conținutul                             |
+| Scrum Master  | Perșa Diana-Alexandra                      | ritmul echipei, board-ul, deblocarea problemelor; ajută la backend         |
+| Frontend      | Putanu Elena-Florina, Vălcan Georgiana-Ana | ecranele, design-ul comun, instrumentele interactive                       |
+| Backend       | Leaț Elena Anabela, Stoina Alexia Fanuria  | logica de server (Server Actions): chestionare, teste, progres, buget      |
+| Database      | Popa Miruna Andreea, Nodiș Bianca-Loredana | Supabase: schema, migrațiile, Row Level Security, autentificarea, stocarea |
+| Tester / QA   | Mranovatz Brigitte                         | cazuri de test, verificarea fiecărui task, verificarea întrebărilor        |
 
 O funcționalitate trece de obicei prin toate cele trei echipe: database pregătește tabelele, backend scrie logica, frontend face ecranul. Cine lucrează efectiv la un task se vede la **Assignees** pe issue.
 
@@ -108,10 +108,10 @@ npm run dev        # pornește aplicația (merge și fără Supabase)
 Aplicația pornește pe `http://localhost:3000`. Pentru variabilele de mediu (necesare
 abia la #44): copiază `.env.example` în `.env.local`.
 
-| Variabilă | Descriere |
-|---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | URL-ul proiectului Supabase |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Cheia publică `anon` |
+| Variabilă                       | Descriere                   |
+| ------------------------------- | --------------------------- |
+| `NEXT_PUBLIC_SUPABASE_URL`      | URL-ul proiectului Supabase |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Cheia publică `anon`        |
 
 > ⚠️ Repo-ul e **public**. `.env.local` nu se pune niciodată pe GitHub, iar cheia `service_role` nu se folosește niciodată în cod de client.
 

@@ -6,15 +6,15 @@ Responsabil QA: Mranovatz Brigitte.
 
 ## Ce testăm
 
-| Zonă                   | Tichete         | Ce verificăm                                                     |
-| ---------------------- | --------------- | ---------------------------------------------------------------- |
-| Skill tree             | #4              | Cele 4 niveluri, starea blocat/deblocat, deschiderea nivelului   |
-| Lecții video           | #5              | Încărcarea din conținut, redarea, marcarea ca vizionată          |
-| Deblocare și progres   | #6, #7          | Deblocarea validată pe server, progresul păstrat între sesiuni   |
-| Chestionar de exersare | #9, #10         | Feedback imediat, scor final, răspunsuri multiple                |
-| Test de nivel          | #11             | 10 întrebări aleatorii, explicații la final, prag de 9/10        |
-| Simulator de buget     | #15             | Calculul soldului, sold negativ, cheltuială neprevăzută          |
-| Conținut Nivelul 1     | #21, #41        | Răspunsuri marcate corect, explicații clare, informații corecte  |
+| Zonă                   | Tichete  | Ce verificăm                                                    |
+| ---------------------- | -------- | --------------------------------------------------------------- |
+| Skill tree             | #4       | Cele 4 niveluri, starea blocat/deblocat, deschiderea nivelului  |
+| Lecții video           | #5       | Încărcarea din conținut, redarea, marcarea ca vizionată         |
+| Deblocare și progres   | #6, #7   | Deblocarea validată pe server, progresul păstrat între sesiuni  |
+| Chestionar de exersare | #9, #10  | Feedback imediat, scor final, răspunsuri multiple               |
+| Test de nivel          | #11      | 10 întrebări aleatorii, explicații la final, prag de 9/10       |
+| Simulator de buget     | #15      | Calculul soldului, sold negativ, cheltuială neprevăzută         |
+| Conținut Nivelul 1     | #21, #41 | Răspunsuri marcate corect, explicații clare, informații corecte |
 
 Nu intră în MVP 1: testele automate și testele de încărcare.
 
@@ -22,13 +22,13 @@ Nu intră în MVP 1: testele automate și testele de încărcare.
 
 Lista trebuie confirmată în funcție de dispozitivele reale ale echipei.
 
-| Prioritate | Platformă | Browser          | Lățime de verificat |
-| ---------- | --------- | ---------------- | ------------------- |
-| Obligatoriu | Telefon Android | Chrome      | 375 px              |
-| Obligatoriu | iPhone    | Safari           | 375 px              |
-| Obligatoriu | Laptop/PC | Chrome           | 1440 px             |
-| Secundar   | Laptop/PC | Firefox          | 1440 px             |
-| Secundar   | Tabletă sau emulare | Chrome | 768 px              |
+| Prioritate  | Platformă           | Browser | Lățime de verificat |
+| ----------- | ------------------- | ------- | ------------------- |
+| Obligatoriu | Telefon Android     | Chrome  | 375 px              |
+| Obligatoriu | iPhone              | Safari  | 375 px              |
+| Obligatoriu | Laptop/PC           | Chrome  | 1440 px             |
+| Secundar    | Laptop/PC           | Firefox | 1440 px             |
+| Secundar    | Tabletă sau emulare | Chrome  | 768 px              |
 
 Emularea din DevTools e bună pentru verificări rapide, dar înainte de „Done” fiecare funcționalitate se verifică pe cel puțin un telefon real.
 
@@ -51,29 +51,29 @@ Un card ajunge în `Done` doar după aprobarea QA (vezi [CONTRIBUTING.md](CONTRI
 
 Bug-urile se raportează pe GitHub: **Issues → New issue**, cu șablonul din `.github/ISSUE_TEMPLATE/`. Autorul atribuie issue-ul developerului sau perechii responsabile.
 
-| Câmp                  | Ce se completează                                       |
-| --------------------- | ------------------------------------------------------- |
-| Title                 | `[UNDE APARE] - descriere scurtă`                       |
-| Description           | Ce s-a întâmplat, pe larg                               |
-| Visual proof          | Captură de ecran sau înregistrare                       |
-| Expected result       | Ce ar fi trebuit să se întâmple                         |
-| Actual result         | Ce s-a întâmplat greșit                                 |
-| Steps to reproduce    | Pașii numerotați care duc la bug                        |
-| Environment           | Dispozitiv, sistem de operare, browser                  |
-| Console logs          | Erorile din consola browserului, dacă există            |
-| Network requests      | Cererile eșuate și codul lor, dacă există               |
-| Source URL            | Pagina pe care apare bug-ul                             |
-| Severity and priority | Valorile din secțiunea următoare                        |
+| Câmp                  | Ce se completează                            |
+| --------------------- | -------------------------------------------- |
+| Title                 | `[UNDE APARE] - descriere scurtă`            |
+| Description           | Ce s-a întâmplat, pe larg                    |
+| Visual proof          | Captură de ecran sau înregistrare            |
+| Expected result       | Ce ar fi trebuit să se întâmple              |
+| Actual result         | Ce s-a întâmplat greșit                      |
+| Steps to reproduce    | Pașii numerotați care duc la bug             |
+| Environment           | Dispozitiv, sistem de operare, browser       |
+| Console logs          | Erorile din consola browserului, dacă există |
+| Network requests      | Cererile eșuate și codul lor, dacă există    |
+| Source URL            | Pagina pe care apare bug-ul                  |
+| Severity and priority | Valorile din secțiunea următoare             |
 
 ### Severitate
 
 Severitatea arată cât de grav e efectul bug-ului.
 
-| Severitate | Când se folosește                                         | Exemplu                                      |
-| ---------- | --------------------------------------------------------- | -------------------------------------------- |
-| Critică    | Aplicația nu poate fi folosită sau datele sunt afectate   | Progresul se pierde, autentificarea nu merge |
-| Majoră     | O funcționalitate importantă e greșită                    | Testul trece cu 8/10                         |
-| Minoră     | Funcționalitatea merge, dar are un defect mic             | Text tăiat pe telefon, greșeală de scriere   |
+| Severitate | Când se folosește                                       | Exemplu                                      |
+| ---------- | ------------------------------------------------------- | -------------------------------------------- |
+| Critică    | Aplicația nu poate fi folosită sau datele sunt afectate | Progresul se pierde, autentificarea nu merge |
+| Majoră     | O funcționalitate importantă e greșită                  | Testul trece cu 8/10                         |
+| Minoră     | Funcționalitatea merge, dar are un defect mic           | Text tăiat pe telefon, greșeală de scriere   |
 
 ### Prioritate
 

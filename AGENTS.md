@@ -46,14 +46,14 @@ Nu inventa reguli de produs, praguri, texte financiare sau date lipsă. Ordinea 
 
 ## 5. Unde se pune codul
 
-| Folder                 | Conținut                                    |
-| ---------------------- | ------------------------------------------- |
-| `app/`                 | Rute și pagini (App Router)                 |
-| `components/`          | Componente de UI reutilizabile              |
-| `backend/`             | Server Actions și logica de server          |
-| `lib/`                 | Client Supabase și utilitare                |
-| `content/`             | Lecții și întrebări, în JSON                |
-| `supabase/migrations/` | Migrații SQL                                |
+| Folder                 | Conținut                           |
+| ---------------------- | ---------------------------------- |
+| `app/`                 | Rute și pagini (App Router)        |
+| `components/`          | Componente de UI reutilizabile     |
+| `backend/`             | Server Actions și logica de server |
+| `lib/`                 | Client Supabase și utilitare       |
+| `content/`             | Lecții și întrebări, în JSON       |
+| `supabase/migrations/` | Migrații SQL                       |
 
 Nu crea foldere noi la rădăcină fără acordul omului.
 

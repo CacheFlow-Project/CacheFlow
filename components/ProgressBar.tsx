@@ -1,5 +1,7 @@
 type ProgressBarProps = {
+  /** Procentul parcurs; valorile din afara intervalului 0–100 sunt limitate. */
   value: number;
+  /** Textul citit de cititoarele de ecran, ex. „Progres Nivelul 1”. */
   label: string;
   className?: string;
 };
@@ -14,10 +16,10 @@ export default function ProgressBar({ value, label, className = "" }: ProgressBa
       aria-valuemin={0}
       aria-valuemax={100}
       aria-valuenow={percent}
-      className={`bg-locked-soft h-2 w-full overflow-hidden rounded-full ${className}`}
+      className={`bg-primary-soft h-2.5 w-full overflow-hidden rounded-full ${className}`}
     >
       <div
-        className="bg-primary h-full rounded-full transition-[width] duration-300"
+        className="bg-primary h-full rounded-full transition-[width] duration-500"
         style={{ width: `${percent}%` }}
       />
     </div>

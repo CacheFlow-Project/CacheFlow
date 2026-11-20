@@ -2,15 +2,15 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 // Rutele publice (fără sesiune). Se aliniază cu ecranele din #53.
-export const PUBLIC_ROUTES = ["/login", "/inregistrare"];
+export const PUBLIC_ROUTES = ["/start", "/login", "/inregistrare"];
 
 /**
  * Proxy (fostul middleware, redenumit în Next.js 16). Reîmprospătează sesiunea
  * Supabase la fiecare request, ca utilizatorul să rămână logat după redeschiderea
  * aplicației.
  *
- * Protecția rutelor (redirect la /login) este pregătită mai jos, dar DEZACTIVATĂ
- * până când există pagina de login din #53 — altfel toate rutele ar da 404.
+ * Protecția rutelor (#53): fără sesiune, orice ecran în afară de PUBLIC_ROUTES
+ * trimite la /start.
  */
 export async function proxy(request: NextRequest) {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
@@ -39,16 +39,27 @@ export async function proxy(request: NextRequest) {
   });
 
   // IMPORTANT: nu pune cod între crearea clientului și getUser() (reîmprospătarea sesiunii).
-  await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
-  // --- Protecția rutelor (se activează odată cu #53) ---
-  // const path = request.nextUrl.pathname;
-  // const isPublic = PUBLIC_ROUTES.some((r) => path === r || path.startsWith(`${r}/`));
-  // if (!user && !isPublic) {
-  //   const redirectUrl = request.nextUrl.clone();
-  //   redirectUrl.pathname = "/login";
-  //   return NextResponse.redirect(redirectUrl);
-  // }
+  // --- Protecția rutelor (#53) ---
+  const path = request.nextUrl.pathname;
+  const isPublic = PUBLIC_ROUTES.some((r) => path === r || path.startsWith(`${r}/`));
+
+  // Fără sesiune, ecranele protejate trimit la ecranul de start (Am cont / Sunt nou).
+  if (!user && !isPublic) {
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.pathname = "/start";
+    return NextResponse.redirect(redirectUrl);
+  }
+
+  // Cine e deja logat nu mai are ce căuta pe start / login / înregistrare.
+  if (user && isPublic) {
+    const redirectUrl = request.nextUrl.clone();
+    redirectUrl.pathname = "/";
+    return NextResponse.redirect(redirectUrl);
+  }
 
   return response;
 }

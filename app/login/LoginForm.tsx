@@ -2,7 +2,6 @@
 
 import { type FormEvent, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { signIn } from "@/backend/auth";
 import Button from "@/components/Button";
 import FormAlert from "@/components/FormAlert";
@@ -15,7 +14,6 @@ import {
 } from "@/lib/auth-validation";
 
 export default function LoginForm() {
-  const router = useRouter();
   const [values, setValues] = useState<Record<LoginFields, string>>({ email: "", password: "" });
   const [errors, setErrors] = useState<FieldErrors<LoginFields>>({});
   const [formError, setFormError] = useState("");
@@ -39,9 +37,9 @@ export default function LoginForm() {
     try {
       const result = await signIn(values.email.trim(), values.password);
       if (result.success) {
-        // După login se ajunge în Acasă; refresh ca proxy-ul să vadă sesiunea nouă.
-        router.replace("/");
-        router.refresh();
+      // Reîncărcare completă intenționată: Next.js păstra în memorie formularul completat.
+      // eslint-disable-next-line @next/next/no-location-assign-relative-destination
+      window.location.assign("/");
         return;
       }
       setFormError(result.error);

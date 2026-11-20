@@ -1,8 +1,6 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
-
-// Rutele publice (fără sesiune). Se aliniază cu ecranele din #53.
-export const PUBLIC_ROUTES = ["/start", "/login", "/inregistrare"];
+import { isPublicRoute } from "@/lib/public-routes";
 
 /**
  * Proxy (fostul middleware, redenumit în Next.js 16). Reîmprospătează sesiunea
@@ -43,9 +41,8 @@ export async function proxy(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  // --- Protecția rutelor (#53) ---
-  const path = request.nextUrl.pathname;
-  const isPublic = PUBLIC_ROUTES.some((r) => path === r || path.startsWith(`${r}/`));
+  // Protecția rutelor (#53)
+  const isPublic = isPublicRoute(request.nextUrl.pathname);
 
   // Fără sesiune, ecranele protejate trimit la ecranul de start (Am cont / Sunt nou).
   if (!user && !isPublic) {

@@ -4,7 +4,9 @@ import type { ComponentType, SVGProps } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Logo from "@/components/Logo";
+import LogoutButton from "@/components/LogoutButton";
 import { BookIcon, ClipboardCheckIcon, HomeIcon, WalletIcon } from "@/components/icons";
+import { isPublicRoute } from "@/lib/public-routes";
 
 type NavItem = {
   label: string;
@@ -33,6 +35,22 @@ function isActive(pathname: string, item: NavItem): boolean {
 
 export default function SiteHeader() {
   const pathname = usePathname();
+  // Pe ecranele fără cont (start, login, înregistrare) apar doar logo-ul,
+  // fără meniu și fără deconectare (#53).
+  const isPublic = isPublicRoute(pathname);
+
+  if (isPublic) {
+    return (
+      <header className="border-border bg-surface/90 sticky top-0 z-20 border-b backdrop-blur-md">
+        <div className="mx-auto flex w-full max-w-5xl items-center px-4 py-3">
+          <Link href="/start" className="flex items-center gap-2.5 rounded-lg">
+            <Logo className="size-8" />
+            <span className="font-display text-xl font-extrabold tracking-tight">CacheFlow</span>
+          </Link>
+        </div>
+      </header>
+    );
+  }
 
   return (
     <>
@@ -80,7 +98,9 @@ export default function SiteHeader() {
           </nav>
 
           {/* Loc rezervat pentru butonul de deconectare (#53). */}
-          <div className="ml-auto flex items-center gap-2" data-slot="cont" />
+          <div className="ml-auto flex items-center gap-2">
+            <LogoutButton />
+          </div>
         </div>
       </header>
 

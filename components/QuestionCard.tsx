@@ -62,10 +62,14 @@ export default function QuestionCard({
   }
 
   function optionClasses(position: number): string {
-    if (!showResult) return "border-border";
+    if (!showResult) {
+      return selected.includes(position)
+        ? "border-primary bg-primary-soft"
+        : "border-border bg-surface hover:border-primary";
+    }
     if (correct.includes(position)) return "border-correct bg-correct-soft";
     if (selected.includes(position)) return "border-wrong bg-wrong-soft";
-    return "border-border";
+    return "border-border bg-surface";
   }
 
   function optionMark(position: number): string | null {
@@ -87,7 +91,7 @@ export default function QuestionCard({
             return (
               <label
                 key={option}
-                className={`flex min-h-11 cursor-pointer items-center gap-3 rounded-lg border px-3 py-2 ${optionClasses(position)}`}
+                className={`flex min-h-12 cursor-pointer items-center gap-3 rounded-xl border px-4 py-3 transition-colors ${optionClasses(position)}`}
               >
                 <input
                   type="checkbox"

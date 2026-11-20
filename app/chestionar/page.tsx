@@ -1,4 +1,4 @@
-import Link from "next/link";
+import BackLink from "@/components/BackLink";
 import content from "@/content/example.json";
 import PracticeQuiz from "./PracticeQuiz";
 
@@ -9,16 +9,14 @@ export default function ChestionarPage() {
 
   return (
     <main className="mx-auto w-full max-w-md px-4 py-8">
-      <h1 className="text-2xl font-bold">Exersare – Nivelul {LEVEL}</h1>
+      <BackLink href="/nivel/1" label="Nivelul 1" />
+      <h1 className="mt-2 text-2xl font-bold">Exersare – Nivelul {LEVEL}</h1>
       <p className="text-muted mt-2 text-sm">
         Răspunde la întrebări și vezi imediat explicația fiecărui răspuns.
       </p>
       <div className="mt-6">
         <PracticeQuiz questions={questions} />
       </div>
-      <Link href="/" className="mt-6 inline-block underline">
-        ← Înapoi
-      </Link>
     </main>
   );
 }

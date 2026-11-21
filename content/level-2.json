@@ -1,0 +1,340 @@
+{
+  "position": 2,
+  "title": "Economii și urgențe",
+  "description": "Cum pui bani deoparte, cum îți construiești un fond de urgență și cum eviți datoriile mici care se adună.",
+  "tool": "joc-decizii",
+  "lessons": [
+    {
+      "position": 1,
+      "title": "Economii și urgențe",
+      "video_url": "https://example.com/video-de-completat",
+      "duration_sec": 0,
+      "description": "De ce economisești, cum îți construiești un fond de urgență și unde îți ții banii."
+    }
+  ],
+  "questions": [
+    {
+      "id": "L2-Q01",
+      "text": "Care dintre acestea este un obiectiv de economisire pe termen scurt?",
+      "options": [
+        "Un laptop nou peste 6 luni",
+        "Avansul pentru o locuință peste 10 ani",
+        "Banii pentru pensie"
+      ],
+      "correct": [0],
+      "explanation": "Un obiectiv pe termen scurt se atinge în câteva luni, de obicei sub un an. Avansul pentru o locuință și pensia sunt obiective pe termen lung."
+    },
+    {
+      "id": "L2-Q02",
+      "text": "Vrei să strângi 1.800 lei pentru o vacanță în 6 luni. Cât trebuie să pui deoparte în fiecare lună?",
+      "options": ["300 lei", "180 lei", "600 lei", "250 lei"],
+      "correct": [0],
+      "explanation": "Împarți suma la numărul de luni: 1.800 lei ÷ 6 = 300 lei pe lună."
+    },
+    {
+      "id": "L2-Q03",
+      "text": "Ce te ajută să atingi un obiectiv de economisire? Bifează toate variantele corecte.",
+      "options": [
+        "Să știi exact ce sumă vrei să strângi",
+        "Să ai un termen clar",
+        "Să economisești doar ce rămâne la final de lună, dacă rămâne ceva",
+        "Să împarți suma în contribuții lunare"
+      ],
+      "correct": [0, 1, 3],
+      "explanation": "Un obiectiv clar are o sumă, un termen și o contribuție lunară. Dacă aștepți să vezi ce rămâne la final de lună, de multe ori nu rămâne nimic."
+    },
+    {
+      "id": "L2-Q04",
+      "text": "Pui deoparte 150 lei pe lună. În câte luni strângi 1.200 lei?",
+      "options": ["6 luni", "8 luni", "10 luni", "12 luni"],
+      "correct": [1],
+      "explanation": "1.200 lei ÷ 150 lei pe lună = 8 luni."
+    },
+    {
+      "id": "L2-Q05",
+      "text": "Ce este fondul de urgență?",
+      "options": [
+        "Bani puși deoparte pentru situații neprevăzute, de exemplu pierderea venitului sau o reparație urgentă",
+        "Bani puși deoparte pentru vacanța de vară",
+        "Un împrumut pe care banca ți-l dă când ai probleme"
+      ],
+      "correct": [0],
+      "explanation": "Fondul de urgență sunt banii tăi, păstrați pentru neprevăzut. Te ajută să nu te împrumuți atunci când apare o problemă."
+    },
+    {
+      "id": "L2-Q06",
+      "text": "Cheltuielile tale lunare sunt 2.500 lei. Cât ar trebui să aibă fondul de urgență, după recomandarea uzuală de 3–6 luni de cheltuieli?",
+      "options": [
+        "Între 7.500 și 15.000 lei",
+        "Între 2.500 și 5.000 lei",
+        "Exact 2.500 lei",
+        "Între 750 și 1.500 lei"
+      ],
+      "correct": [0],
+      "explanation": "3 × 2.500 lei = 7.500 lei și 6 × 2.500 lei = 15.000 lei. Intervalul de 3–6 luni este o recomandare, nu o regulă obligatorie: o poți adapta la situația ta."
+    },
+    {
+      "id": "L2-Q07",
+      "text": "În care situații e potrivit să folosești fondul de urgență? Bifează toate variantele corecte.",
+      "options": [
+        "Ți-ai pierdut locul de muncă",
+        "Telefoanele sunt la reducere de Black Friday",
+        "S-a stricat centrala în mijlocul iernii",
+        "Prietenii merg la un concert"
+      ],
+      "correct": [0, 2],
+      "explanation": "Fondul de urgență e pentru situații neprevăzute și necesare, cum ar fi pierderea venitului sau o reparație urgentă. Reducerile și ieșirile sunt dorințe, pentru care economisești separat."
+    },
+    {
+      "id": "L2-Q08",
+      "text": "Unde e potrivit să ții fondul de urgență?",
+      "options": [
+        "Într-un cont de economii din care poți retrage repede",
+        "În acțiuni cumpărate la bursă",
+        "Împrumutat unui prieten"
+      ],
+      "correct": [0],
+      "explanation": "Fondul de urgență trebuie să fie disponibil repede și să nu riște să scadă. Acțiunile își pot pierde din valoare exact când ai nevoie de bani, iar un împrumut dat unui prieten nu îl poți recupera oricând."
+    },
+    {
+      "id": "L2-Q09",
+      "text": "Ai folosit 1.000 lei din fondul de urgență pentru o reparație. Ce e recomandat să faci după aceea?",
+      "options": [
+        "Să refaci fondul treptat, din economiile lunilor următoare",
+        "Nimic, fondul și-a făcut treaba",
+        "Să iei un credit ca să-l refaci imediat"
+      ],
+      "correct": [0],
+      "explanation": "Fondul trebuie refăcut ca să te protejeze și la următoarea problemă. Un credit pentru asta ar însemna să plătești dobândă pe propriile economii."
+    },
+    {
+      "id": "L2-Q10",
+      "text": "Ai un fond de urgență de 9.000 lei, iar cheltuielile tale lunare sunt 3.000 lei. Câte luni te acoperă fondul?",
+      "options": ["2 luni", "3 luni", "6 luni", "9 luni"],
+      "correct": [1],
+      "explanation": "9.000 lei ÷ 3.000 lei pe lună = 3 luni, adică limita de jos a recomandării uzuale de 3–6 luni."
+    },
+    {
+      "id": "L2-Q11",
+      "text": "Ce înseamnă „plătește-te întâi pe tine”?",
+      "options": [
+        "Pui deoparte suma pentru economii imediat ce primești venitul, înainte de alte cheltuieli",
+        "Îți cumperi întâi ce îți dorești, apoi plătești facturile",
+        "Economisești doar ce rămâne la sfârșitul lunii"
+      ],
+      "correct": [0],
+      "explanation": "Economiile sunt tratate ca o cheltuială fixă, care se plătește prima. Restul bugetului îl împarți apoi pe celelalte cheltuieli."
+    },
+    {
+      "id": "L2-Q12",
+      "text": "De ce ajută un transfer automat în contul de economii, în ziua în care primești salariul? Bifează toate variantele corecte.",
+      "options": [
+        "Nu mai depinzi de voință în fiecare lună",
+        "Banii economisiți nu mai stau la îndemână pentru cumpărături impulsive",
+        "Banca îți dublează economiile",
+        "Economisirea devine un obicei regulat"
+      ],
+      "correct": [0, 1, 3],
+      "explanation": "Transferul automat face economisirea regulată și separă banii de cei pentru cheltuieli. Banca nu îți dublează economiile; cel mult primești o dobândă."
+    },
+    {
+      "id": "L2-Q13",
+      "text": "Primești 3.000 lei pe lună și vrei să economisești 10% din ziua salariului. Cât transferi în contul de economii?",
+      "options": ["30 lei", "300 lei", "200 lei", "3.000 lei"],
+      "correct": [1],
+      "explanation": "10% din 3.000 lei = 3.000 × 0,10 = 300 lei."
+    },
+    {
+      "id": "L2-Q14",
+      "text": "Ana economisește ce îi rămâne la sfârșitul lunii. Mihai transferă automat 200 lei în ziua salariului. Cine are mai multe șanse să economisească în fiecare lună?",
+      "options": ["Mihai", "Ana", "Au aceleași șanse"],
+      "correct": [0],
+      "explanation": "Mihai pune banii deoparte înainte să înceapă să cheltuiască. Ana depinde de ce rămâne, iar cheltuielile tind să ocupe tot venitul disponibil."
+    },
+    {
+      "id": "L2-Q15",
+      "text": "Pui automat 250 lei pe lună în contul de economii. Cât strângi într-un an, fără să socotești dobânda?",
+      "options": ["2.500 lei", "2.750 lei", "3.000 lei", "3.250 lei"],
+      "correct": [2],
+      "explanation": "250 lei × 12 luni = 3.000 lei."
+    },
+    {
+      "id": "L2-Q16",
+      "text": "La ce folosește în primul rând contul curent?",
+      "options": [
+        "La operațiunile zilnice: primești salariul, plătești cu cardul, achiți facturile",
+        "La economisirea pe termen lung, cu dobândă mare",
+        "La cumpărarea de acțiuni la bursă"
+      ],
+      "correct": [0],
+      "explanation": "Contul curent e pentru banii pe care îi folosești zilnic. De obicei aduce o dobândă foarte mică sau deloc, așa că nu e locul potrivit pentru economii."
+    },
+    {
+      "id": "L2-Q17",
+      "text": "Ce este caracteristic unui depozit la termen?",
+      "options": [
+        "Banii stau blocați o perioadă stabilită, iar dacă îi retragi mai devreme pierzi, de obicei, dobânda promisă, total sau în parte",
+        "Poți retrage banii oricând, fără nicio pierdere",
+        "Nu aduce niciodată dobândă"
+      ],
+      "correct": [0],
+      "explanation": "La depozit te angajezi să lași banii o perioadă, de exemplu 3, 6 sau 12 luni, în schimbul unei dobânzi. Condițiile exacte pentru retragerea înainte de termen sunt scrise în contractul fiecărei bănci."
+    },
+    {
+      "id": "L2-Q18",
+      "text": "Ce avantaje are, de obicei, un cont de economii față de contul curent? Bifează toate variantele corecte.",
+      "options": [
+        "Aduce o dobândă mai mare",
+        "Banii economisiți stau separat de cei pentru cheltuieli",
+        "Plătești cu el direct, cu cardul, în orice magazin",
+        "Banii sunt garantați de stat fără nicio limită"
+      ],
+      "correct": [0, 1],
+      "explanation": "Contul de economii aduce de obicei o dobândă mai mare și te ajută să nu cheltui economiile. De regulă nu plătești direct cu el, iar garantarea depozitelor are o limită de 100.000 € per bancă."
+    },
+    {
+      "id": "L2-Q19",
+      "text": "Ai bani pentru fondul de urgență, de care s-ar putea să ai nevoie oricând. Care variantă e cea mai potrivită?",
+      "options": [
+        "Un cont de economii din care poți retrage când ai nevoie",
+        "Un depozit la termen pe 2 ani",
+        "Bani cash ascunși prin casă"
+      ],
+      "correct": [0],
+      "explanation": "Contul de economii îți dă acces rapid la bani și o dobândă. La depozitul pe 2 ani riști să pierzi dobânda dacă scoți banii mai devreme, iar banii ținuți acasă pot fi furați sau pierduți și nu aduc nimic."
+    },
+    {
+      "id": "L2-Q20",
+      "text": "Pui 5.000 lei într-un depozit pe 1 an, cu o dobândă de 5% pe an. Cât este dobânda, înainte de eventualele taxe?",
+      "options": ["50 lei", "250 lei", "500 lei", "5.250 lei"],
+      "correct": [1],
+      "explanation": "5% din 5.000 lei = 5.000 × 0,05 = 250 lei. La final ai 5.250 lei, din care 250 lei sunt dobânda."
+    },
+    {
+      "id": "L2-Q21",
+      "text": "Ce garantează Fondul de Garantare a Depozitelor Bancare (FGDB)?",
+      "options": [
+        "Depozitele tale la o bancă, până la echivalentul a 100.000 € per deponent, per bancă",
+        "Orice investiție, fără limită",
+        "Doar conturile deschise în euro"
+      ],
+      "correct": [0],
+      "explanation": "Dacă banca nu mai poate plăti depozitele, FGDB îți dă înapoi banii, până la echivalentul a 100.000 € per bancă. Garanția se aplică și depozitelor în lei, nu doar celor în euro."
+    },
+    {
+      "id": "L2-Q22",
+      "text": "Ai 130.000 € la o singură bancă, iar banca nu mai poate plăti depozitele. Cât îți garantează FGDB?",
+      "options": ["130.000 €", "100.000 €", "50.000 €", "Nimic"],
+      "correct": [1],
+      "explanation": "Garanția este de maximum 100.000 € per deponent, per bancă. Restul de 30.000 € nu este garantat, așa că sumele mari se împart, de regulă, la mai multe bănci."
+    },
+    {
+      "id": "L2-Q23",
+      "text": "Ai 80.000 € la banca A și 80.000 € la banca B, două bănci diferite. Cât îți e garantat în total de FGDB?",
+      "options": ["100.000 €", "80.000 €", "160.000 €", "Nimic"],
+      "correct": [2],
+      "explanation": "Limita de 100.000 € se aplică separat la fiecare bancă. La fiecare dintre cele două bănci ai sub limită, deci ambele sume sunt garantate: 80.000 € + 80.000 € = 160.000 €."
+    },
+    {
+      "id": "L2-Q24",
+      "text": "Ai 70.000 € într-un cont curent și 60.000 € într-un depozit, la aceeași bancă. Cât îți garantează FGDB?",
+      "options": ["130.000 €", "100.000 €", "70.000 €", "60.000 €"],
+      "correct": [1],
+      "explanation": "Limita de 100.000 € se aplică totalului depozitelor tale de la aceeași bancă, nu fiecărui cont. Totalul este 130.000 €, deci sunt garantați 100.000 €."
+    },
+    {
+      "id": "L2-Q25",
+      "text": "Care dintre acestea sunt acoperite de garantarea depozitelor (FGDB)? Bifează toate variantele corecte.",
+      "options": [
+        "Un depozit la termen la o bancă",
+        "Acțiunile cumpărate la bursă",
+        "Un cont de economii la o bancă",
+        "Criptomonedele"
+      ],
+      "correct": [0, 2],
+      "explanation": "FGDB garantează depozitele bancare, cum sunt conturile curente, conturile de economii și depozitele la termen. Acțiunile și criptomonedele sunt investiții, nu depozite, și nu sunt garantate de FGDB."
+    },
+    {
+      "id": "L2-Q26",
+      "text": "Chiria unui apartament cu 2 camere este 2.400 lei, iar utilitățile sunt 600 lei pe lună. Dacă împarți totul egal cu un coleg, cât plătești tu pe lună?",
+      "options": ["1.200 lei", "1.500 lei", "3.000 lei", "1.800 lei"],
+      "correct": [1],
+      "explanation": "Totalul este 2.400 + 600 = 3.000 lei. Împărțit la 2, partea ta este 1.500 lei. Varianta de 1.200 lei apare dacă uiți de utilități."
+    },
+    {
+      "id": "L2-Q27",
+      "text": "O garsonieră în care stai singur costă 1.800 lei chirie și 400 lei utilități pe lună. Într-un apartament cu un coleg, partea ta este 1.300 lei pe lună, cu tot cu utilități. Cât economisești pe lună dacă stai cu colegul?",
+      "options": ["500 lei", "900 lei", "1.300 lei", "400 lei"],
+      "correct": [1],
+      "explanation": "Singur plătești 1.800 + 400 = 2.200 lei. Cu colegul plătești 1.300 lei. Diferența este 2.200 − 1.300 = 900 lei pe lună."
+    },
+    {
+      "id": "L2-Q28",
+      "text": "Ce dezavantaje are, de obicei, locuitul cu colegi? Bifează toate variantele corecte.",
+      "options": [
+        "Ai mai puțină intimitate",
+        "Trebuie să vă înțelegeți la curățenie și la împărțirea facturilor",
+        "Plătești mai puțin pe chirie",
+        "Chiria crește automat pentru fiecare coleg"
+      ],
+      "correct": [0, 1],
+      "explanation": "Locuitul cu colegi înseamnă costuri mai mici, dar și mai puțină intimitate și reguli comune. Chiria mai mică pe persoană este un avantaj, nu un dezavantaj."
+    },
+    {
+      "id": "L2-Q29",
+      "text": "Ce e bine să stabiliți de la început cu un coleg de apartament? Bifează toate variantele corecte.",
+      "options": [
+        "Cum împărțiți chiria și facturile",
+        "Ce se întâmplă dacă unul dintre voi se mută",
+        "Nimic, lucrurile se rezolvă pe parcurs",
+        "Cine plătește fiecare factură și până când"
+      ],
+      "correct": [0, 1, 3],
+      "explanation": "Regulile stabilite de la început evită certurile și facturile neplătite. Dacă un coleg pleacă fără înțelegere, partea lui de chirie poate rămâne în sarcina ta."
+    },
+    {
+      "id": "L2-Q30",
+      "text": "Ai cumpărat în rate 4 lucruri, cu ratele lunare de 150, 200, 120 și 80 lei. Cât plătești în total pe lună?",
+      "options": ["450 lei", "550 lei", "600 lei", "200 lei"],
+      "correct": [1],
+      "explanation": "150 + 200 + 120 + 80 = 550 lei pe lună. Fiecare rată pare mică, dar împreună ocupă o parte importantă din buget."
+    },
+    {
+      "id": "L2-Q31",
+      "text": "Care este riscul principal al ofertelor de tip „cumpără acum, plătește mai târziu”?",
+      "options": [
+        "Par ieftine pe moment, dar mai multe plăți mici adunate pot ocupa o parte mare din buget",
+        "Nu au niciun risc, pentru că nu costă nimic în plus",
+        "Plătești mereu mai puțin decât prețul obișnuit"
+      ],
+      "correct": [0],
+      "explanation": "Plata amânată face cumpărătura să pară ușoară, iar mai multe astfel de plăți se adună. În funcție de contract, pot apărea și costuri suplimentare sau penalități dacă întârzii o plată."
+    },
+    {
+      "id": "L2-Q32",
+      "text": "Un telefon costă 3.000 lei dacă plătești integral, sau 12 rate de 280 lei. Cât plătești în plus dacă îl iei în rate?",
+      "options": ["280 lei", "360 lei", "0 lei", "3.360 lei"],
+      "correct": [1],
+      "explanation": "În rate plătești 12 × 280 = 3.360 lei. Diferența față de prețul integral este 3.360 − 3.000 = 360 lei."
+    },
+    {
+      "id": "L2-Q33",
+      "text": "Ce ar trebui să verifici înainte să cumperi ceva în rate? Bifează toate variantele corecte.",
+      "options": [
+        "Cât plătești în total, nu doar rata lunară",
+        "Dacă rata încape în buget, împreună cu celelalte rate pe care le ai",
+        "Ce penalități apar dacă întârzii o plată",
+        "Doar dacă rata lunară pare mică"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "O rată mică nu înseamnă o cumpărătură ieftină. Contează costul total, cât din buget ocupă toate ratele împreună și ce se întâmplă dacă întârzii."
+    },
+    {
+      "id": "L2-Q34",
+      "text": "Venitul tău net este 3.000 lei pe lună, iar toate ratele tale însumează 900 lei pe lună. Ce procent din venit merge pe rate?",
+      "options": ["9%", "25%", "30%", "33%"],
+      "correct": [2],
+      "explanation": "900 ÷ 3.000 = 0,30, adică 30% din venit. Cu cât procentul e mai mare, cu atât îți rămân mai puțini bani pentru cheltuieli și economii."
+    }
+  ]
+}

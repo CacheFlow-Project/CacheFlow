@@ -332,34 +332,6 @@
       ],
       "correct": [0],
       "explanation": "Exemplarul tău de contract și fluturașii arată ce drepturi ai și cât ai fost plătit. Îți folosesc dacă apare o neînțelegere cu angajatorul sau dacă ai nevoie să dovedești venitul."
-    },
-    {
-      "id": "L3-Q34",
-      "text": "La primul tău loc de muncă ai un salariu apropiat de cel minim: 4.400 lei brut. Nu ai deducere personală. Cât primești net?",
-      "options": ["2.574 lei", "2.860 lei", "2.420 lei", "3.960 lei"],
-      "correct": [0],
-      "explanation": "CAS = 25% × 4.400 = 1.100 lei, CASS = 10% × 4.400 = 440 lei, deci baza de impozitare este 2.860 lei. Impozitul este 10% × 2.860 = 286 lei, iar netul este 2.860 − 286 = 2.574 lei. 2.420 lei apare dacă iei impozitul direct din brut."
-    },
-    {
-      "id": "L3-Q35",
-      "text": "Salariul tău brut este 4.400 lei. Cât se reține pentru pensie (CAS)?",
-      "options": ["1.100 lei", "440 lei", "286 lei", "1.540 lei"],
-      "correct": [0],
-      "explanation": "CAS este 25% din brut: 4.400 × 0,25 = 1.100 lei. 440 lei este CASS-ul (10%), iar 1.540 lei este suma CAS + CASS."
-    },
-    {
-      "id": "L3-Q36",
-      "text": "Salariul tău brut este 4.400 lei și nu ai deducere personală. Cât se reține în total din brut, cu CAS, CASS și impozit?",
-      "options": ["1.826 lei", "1.540 lei", "1.980 lei", "286 lei"],
-      "correct": [0],
-      "explanation": "Se rețin CAS 1.100 lei, CASS 440 lei și impozit 286 lei: 1.100 + 440 + 286 = 1.826 lei. 1.980 lei apare dacă impozitul e calculat greșit, direct din brut (440 lei)."
-    },
-    {
-      "id": "L3-Q37",
-      "text": "Câștigi 2.520 lei net pe lună și lucrezi 168 de ore pe lună. Câte ore de muncă te costă un telefon de 1.500 lei?",
-      "options": ["100 de ore", "60 de ore", "150 de ore", "15 ore"],
-      "correct": [0],
-      "explanation": "Câștigi 2.520 ÷ 168 = 15 lei pe oră. Telefonul costă 1.500 ÷ 15 = 100 de ore, adică 12,5 zile de lucru a câte 8 ore."
     }
   ]
 }

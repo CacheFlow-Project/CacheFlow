@@ -120,3 +120,51 @@ export async function markStep(
 export async function markPracticeDone(userId: string, levelId: number) {
   return markStep(userId, "practice_done_at", levelId);
 }
+
+/**
+ * Marchează o lecție ca vizionată în `user_progress` și recalculează starea nivelului (#77).
+ * Lecțiile scriu în `user_progress`, nu în `level_progress`, deci au flux propriu
+ * (nu pot refolosi `markStep`). `userId` vine din sesiune, citit de Server Action-ul care apelează.
+ */
+export async function markLessonCompleted(
+  userId: string,
+  lessonId: number,
+): Promise<{ studied: boolean }> {
+  const admin = createAdminClient();
+
+  // Aflăm nivelul lecției pe server (lessonId vine din browser, deci îl validăm).
+  const { data: lesson, error: lessonError } = await admin
+    .from("lessons")
+    .select("level_id")
+    .eq("id", lessonId)
+    .maybeSingle();
+
+  if (lessonError) {
+    throw new Error(`Nu am putut verifica lecția: ${lessonError.message}`);
+  }
+  if (!lesson) {
+    throw new Error("Lecția nu există.");
+  }
+  const levelId = lesson.level_id as number;
+
+  // Criteriu de acceptare: nu se pot marca lecții dintr-un nivel blocat.
+  if (await isLevelLocked(userId, levelId)) {
+    throw new Error("Nivelul este blocat. Termină întâi nivelul anterior.");
+  }
+
+  // Scriere prin service_role: după #113 userul nu mai scrie direct în tabel.
+  // Upsert pe (user_id, lesson_id) — marcarea repetată nu creează duplicate (criteriu de acceptare).
+  const now = new Date().toISOString();
+  const { error } = await admin
+    .from("user_progress")
+    .upsert(
+      { user_id: userId, lesson_id: lessonId, completed: true, completed_at: now },
+      { onConflict: "user_id,lesson_id" },
+    );
+
+  if (error) {
+    throw new Error(`Nu am putut marca lecția ca vizionată: ${error.message}`);
+  }
+
+  return { studied: await refreshLevelStudied(userId, levelId) };
+}

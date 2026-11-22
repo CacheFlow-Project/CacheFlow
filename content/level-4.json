@@ -1,0 +1,355 @@
+{
+  "position": 4,
+  "title": "Investiții și dobândă",
+  "description": "Cum lucrează dobânda pentru tine sau împotriva ta, ce face inflația cu banii și cum recunoști o investiție riscantă sau o înșelătorie.",
+  "tool": "dobanda-si-inflatia",
+  "lessons": [
+    {
+      "position": 1,
+      "title": "Investiții și dobândă",
+      "video_url": "https://example.com/video-de-completat",
+      "duration_sec": 0,
+      "description": "Dobânda simplă și compusă, inflația, costul creditelor și primele investiții."
+    }
+  ],
+  "questions": [
+    {
+      "id": "L4-Q01",
+      "text": "Pui 1.000 lei cu o dobândă simplă de 10% pe an. Câtă dobândă primești în total după 3 ani?",
+      "options": ["100 lei", "300 lei", "331 lei", "1.300 lei"],
+      "correct": [1],
+      "explanation": "La dobânda simplă, dobânda se calculează mereu din suma inițială: 10% din 1.000 lei = 100 lei pe an, deci 3 × 100 = 300 lei. La final ai 1.300 lei."
+    },
+    {
+      "id": "L4-Q02",
+      "text": "Pui 1.000 lei cu o dobândă compusă de 10% pe an, capitalizată anual. Câți bani ai după 2 ani?",
+      "options": ["1.200 lei", "1.210 lei", "1.100 lei", "1.020 lei"],
+      "correct": [1],
+      "explanation": "În primul an primești 100 lei și ajungi la 1.100 lei. În al doilea an dobânda se calculează din 1.100 lei: 110 lei, deci ajungi la 1.210 lei."
+    },
+    {
+      "id": "L4-Q03",
+      "text": "Ce înseamnă dobânda compusă?",
+      "options": [
+        "Primești dobândă și la dobânda adunată în anii anteriori, nu doar la suma inițială",
+        "Primești dobândă doar la suma pe care ai pus-o la început",
+        "Dobânda se schimbă în fiecare lună, după cum hotărăște banca"
+      ],
+      "correct": [0],
+      "explanation": "La dobânda compusă, dobânda câștigată se adaugă la sumă și produce la rândul ei dobândă. De aceea suma crește tot mai repede cu trecerea anilor."
+    },
+    {
+      "id": "L4-Q04",
+      "text": "Pui 1.000 lei pe 3 ani cu 10% pe an. Cu cât ai mai mult la final cu dobândă compusă (capitalizată anual) decât cu dobândă simplă?",
+      "options": ["0 lei", "31 lei", "300 lei", "331 lei"],
+      "correct": [1],
+      "explanation": "Cu dobândă simplă ajungi la 1.300 lei. Cu dobândă compusă: 1.000 → 1.100 → 1.210 → 1.331 lei. Diferența este 1.331 − 1.300 = 31 lei și crește cu fiecare an în plus."
+    },
+    {
+      "id": "L4-Q05",
+      "text": "La dobânda compusă, ce face ca suma finală să fie mai mare? Bifează toate variantele corecte.",
+      "options": [
+        "O dobândă anuală mai mare",
+        "O perioadă mai lungă",
+        "Contribuții regulate, de exemplu lunare",
+        "Retragerea dobânzii în fiecare an"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Suma crește cu dobânda, cu timpul și cu banii adăugați regulat. Dacă retragi dobânda în fiecare an, ea nu mai produce dobândă, iar efectul compus dispare."
+    },
+    {
+      "id": "L4-Q06",
+      "text": "„Regula lui 72” spune că suma se dublează în aproximativ 72 ÷ dobânda anuală ani. În cât timp se dublează, aproximativ, o sumă cu dobândă compusă de 6% pe an?",
+      "options": ["6 ani", "12 ani", "72 de ani", "36 de ani"],
+      "correct": [1],
+      "explanation": "72 ÷ 6 = 12 ani. Regula dă doar o estimare rapidă: calculul exact pentru 6% dă aproape 12 ani."
+    },
+    {
+      "id": "L4-Q07",
+      "text": "Ana începe la 18 ani să pună 100 lei pe lună, iar Bogdan începe la 30 de ani cu aceeași sumă. Amândoi primesc aceeași dobândă și se opresc la 65 de ani. Cine are mai mulți bani la final?",
+      "options": ["Ana", "Bogdan", "Au la fel"],
+      "correct": [0],
+      "explanation": "Ana depune mai mulți ani, iar banii ei au mai mult timp să adune dobândă la dobândă. Timpul este cel mai mare avantaj al cuiva care începe devreme."
+    },
+    {
+      "id": "L4-Q08",
+      "text": "Ana pune 100 lei pe lună de la 18 la 65 de ani, iar Bogdan pune tot 100 lei pe lună, dar de la 30 la 65 de ani. Cu cât depune Ana mai mult decât Bogdan, fără dobândă?",
+      "options": ["1.200 lei", "12.000 lei", "14.400 lei", "56.400 lei"],
+      "correct": [2],
+      "explanation": "Ana începe cu 12 ani mai devreme: 12 ani × 12 luni × 100 lei = 14.400 lei. În total, Ana depune 56.400 lei, iar Bogdan 42.000 lei."
+    },
+    {
+      "id": "L4-Q09",
+      "text": "Ana și Bogdan din exemplul anterior primesc, ipotetic, 6% pe an, cu dobândă compusă lunar. La 65 de ani, Ana are aproximativ 313.000 lei, iar Bogdan aproximativ 142.000 lei. De ce diferența e mult mai mare decât cei 14.400 lei depuși în plus de Ana?",
+      "options": [
+        "Pentru că toți banii Anei au avut cu 12 ani mai mult timp să adune dobândă la dobândă",
+        "Pentru că Ana a primit o dobândă mai mare",
+        "Pentru că Bogdan a retras bani pe parcurs"
+      ],
+      "correct": [0],
+      "explanation": "Amândoi au aceeași dobândă și nu retrag nimic. Diferența vine din cei 12 ani în plus de dobândă compusă. Cifrele sunt un exemplu: un randament de 6% pe an nu este garantat."
+    },
+    {
+      "id": "L4-Q10",
+      "text": "De ce contează să începi să economisești sau să investești devreme? Bifează toate variantele corecte.",
+      "options": [
+        "Dobânda are mai mulți ani să se adune peste dobândă",
+        "Poți pune lunar o sumă mai mică pentru același rezultat final",
+        "Câștigul e garantat, indiferent unde investești",
+        "Ai mai mulți ani în care contribui"
+      ],
+      "correct": [0, 1, 3],
+      "explanation": "Timpul lucrează în favoarea ta: mai mulți ani de contribuții și de dobândă compusă. Nicio investiție nu devine însă sigură doar pentru că ai început devreme."
+    },
+    {
+      "id": "L4-Q11",
+      "text": "Ce este inflația?",
+      "options": [
+        "Creșterea generală a prețurilor, din cauza căreia cu aceiași bani cumperi mai puțin",
+        "Dobânda pe care ți-o dă banca la depozite",
+        "Scăderea salariilor într-un an"
+      ],
+      "correct": [0],
+      "explanation": "Când prețurile cresc, aceeași sumă de bani are o putere de cumpărare mai mică. Asta se numește inflație."
+    },
+    {
+      "id": "L4-Q12",
+      "text": "Ai 1.000 lei, iar inflația într-un an este 10%. Cât valorează banii tăi după un an, ca putere de cumpărare, în lei de azi?",
+      "options": ["Aproximativ 909 lei", "900 lei", "1.000 lei", "1.100 lei"],
+      "correct": [0],
+      "explanation": "Puterea de cumpărare = 1.000 ÷ 1,10 ≈ 909 lei. Ce costa 1.000 lei costă acum 1.100 lei, deci cu banii tăi cumperi doar aproximativ 909 lei din lucrurile de anul trecut."
+    },
+    {
+      "id": "L4-Q13",
+      "text": "Un coș de cumpărături costă azi 200 lei. Dacă inflația este 5% într-un an, cât va costa probabil același coș peste un an?",
+      "options": ["205 lei", "210 lei", "250 lei", "190 lei"],
+      "correct": [1],
+      "explanation": "5% din 200 lei = 10 lei, deci coșul ajunge la aproximativ 210 lei. Inflația este o medie: unele produse se scumpesc mai mult, altele mai puțin."
+    },
+    {
+      "id": "L4-Q14",
+      "text": "Ții 10.000 lei „la saltea” 2 ani, iar inflația este 5% pe an. Cât valorează banii, ca putere de cumpărare, după 2 ani?",
+      "options": ["10.000 lei", "Aproximativ 9.070 lei", "9.000 lei", "11.025 lei"],
+      "correct": [1],
+      "explanation": "Puterea de cumpărare = 10.000 ÷ 1,05² = 10.000 ÷ 1,1025 ≈ 9.070 lei. Suma din saltea rămâne 10.000 lei, dar cumpără tot mai puțin."
+    },
+    {
+      "id": "L4-Q15",
+      "text": "Ai un depozit cu o dobândă de 4% pe an, iar inflația este 6% pe an. Ce se întâmplă, aproximativ, cu puterea de cumpărare a banilor tăi?",
+      "options": [
+        "Scade cu aproximativ 2% pe an",
+        "Crește cu 4% pe an",
+        "Crește cu 10% pe an",
+        "Rămâne la fel"
+      ],
+      "correct": [0],
+      "explanation": "Câștigul real este, aproximativ, dobânda minus inflația: 4% − 6% = −2%. Ai mai mulți lei, dar cumperi mai puțin cu ei."
+    },
+    {
+      "id": "L4-Q16",
+      "text": "Cum ții cont de inflație când îți plănuiești economiile? Bifează toate variantele corecte.",
+      "options": [
+        "Compari dobânda sau randamentul primit cu rata inflației",
+        "Cauți un randament cel puțin egal cu inflația, cu un risc pe care ți-l poți permite",
+        "Ții toți banii în numerar acasă, ca să nu-i pierzi",
+        "Presupui că 1.000 lei vor cumpăra același lucru și peste 10 ani"
+      ],
+      "correct": [0, 1],
+      "explanation": "Banii păstrați fără dobândă pierd din valoare când prețurile cresc. Ce contează este randamentul după inflație, dar fără să îți asumi riscuri pe care nu le poți suporta."
+    },
+    {
+      "id": "L4-Q17",
+      "text": "Ce arată DAE (dobânda anuală efectivă) la un credit?",
+      "options": [
+        "Costul total anual al creditului, în procente: dobânda plus comisioanele și celelalte costuri obligatorii",
+        "Doar dobânda, fără comisioane",
+        "Inflația din anul în care iei creditul"
+      ],
+      "correct": [0],
+      "explanation": "DAE adună într-un singur procent dobânda și costurile obligatorii ale creditului. Așa poți compara corect ofertele mai multor bănci."
+    },
+    {
+      "id": "L4-Q18",
+      "text": "Ai două oferte pentru același credit. Oferta A: dobândă 8%, DAE 11%. Oferta B: dobândă 9%, DAE 9,5%. Care este, în general, mai ieftină?",
+      "options": [
+        "Oferta B, pentru că are DAE mai mică",
+        "Oferta A, pentru că are dobânda mai mică",
+        "Costă la fel"
+      ],
+      "correct": [0],
+      "explanation": "Oferta A are dobânda mai mică, dar comisioanele o fac mai scumpă. DAE include toate costurile obligatorii, deci compari ofertele după DAE."
+    },
+    {
+      "id": "L4-Q19",
+      "text": "Ce intră în calculul DAE? Bifează toate variantele corecte.",
+      "options": [
+        "Dobânda creditului",
+        "Comisioanele obligatorii ale creditului",
+        "Prețul produsului pe care îl cumperi cu creditul",
+        "Rata inflației"
+      ],
+      "correct": [0, 1],
+      "explanation": "DAE cuprinde dobânda și costurile obligatorii legate de credit, de exemplu comisioanele. Prețul produsului și inflația nu fac parte din costul creditului."
+    },
+    {
+      "id": "L4-Q20",
+      "text": "Împrumuți 10.000 lei, iar în total, până la sfârșitul creditului, dai înapoi 12.400 lei. Cât te-a costat creditul?",
+      "options": ["2.400 lei", "12.400 lei", "1.240 lei", "10.000 lei"],
+      "correct": [0],
+      "explanation": "Costul creditului este diferența dintre ce dai înapoi și ce ai împrumutat: 12.400 − 10.000 = 2.400 lei."
+    },
+    {
+      "id": "L4-Q21",
+      "text": "De ce nu e suficient să compari doar dobânda când alegi un credit?",
+      "options": [
+        "Pentru că un credit cu dobândă mică poate avea comisioane mari, care îl fac mai scump",
+        "Pentru că dobânda nu influențează costul creditului",
+        "Pentru că toate creditele au aceleași comisioane"
+      ],
+      "correct": [0],
+      "explanation": "Comisioanele se adaugă la dobândă. DAE și suma totală de plată arată cât costă de fapt creditul."
+    },
+    {
+      "id": "L4-Q22",
+      "text": "Ce relație există, de obicei, între randament și risc?",
+      "options": [
+        "Cu cât randamentul posibil e mai mare, cu atât riscul de pierdere e mai mare",
+        "Randamentele mari vin întotdeauna fără risc",
+        "Riscul nu are legătură cu randamentul"
+      ],
+      "correct": [0],
+      "explanation": "Investițiile care pot aduce câștiguri mari pot aduce și pierderi mari. Nimic sigur nu aduce un câștig foarte mare."
+    },
+    {
+      "id": "L4-Q23",
+      "text": "Ce înseamnă să îți diversifici investițiile? Bifează toate variantele corecte.",
+      "options": [
+        "Să împarți banii între mai multe investiții diferite",
+        "Să reduci riscul ca o singură pierdere să îți afecteze toți banii",
+        "Să fii sigur că nu pierzi niciodată bani",
+        "Să pui toți banii în acțiunile unei singure firme"
+      ],
+      "correct": [0, 1],
+      "explanation": "Diversificarea reduce riscul: dacă o investiție merge prost, celelalte pot compensa. Ea nu garantează însă că nu pierzi nimic."
+    },
+    {
+      "id": "L4-Q24",
+      "text": "Care dintre aceste variante are, de obicei, cel mai mic risc de pierdere?",
+      "options": [
+        "Un depozit bancar, în limita garantată de FGDB",
+        "Acțiunile unei singure firme",
+        "O criptomonedă nouă, promovată pe rețelele sociale"
+      ],
+      "correct": [0],
+      "explanation": "Depozitul bancar are risc mic și e garantat de FGDB până la 100.000 € per deponent, per bancă. Acțiunile și criptomonedele își pot schimba mult valoarea, în sus sau în jos."
+    },
+    {
+      "id": "L4-Q25",
+      "text": "Ai economisit fondul de urgență și te gândești să-l pui în acțiuni, ca să câștigi mai mult. Ce e recomandat?",
+      "options": [
+        "Să păstrezi fondul de urgență într-un loc sigur și ușor de retras, iar în acțiuni să pui doar bani de care nu ai nevoie curând",
+        "Să pui tot fondul în acțiuni, pentru că acolo randamentul e mai mare",
+        "Să împrumuți bani ca să investești mai mult"
+      ],
+      "correct": [0],
+      "explanation": "Valoarea acțiunilor poate scădea exact când ai nevoie de bani. Fondul de urgență trebuie să fie disponibil oricând, iar investițiile riscante se fac doar cu bani pe care nu îi vei folosi curând."
+    },
+    {
+      "id": "L4-Q26",
+      "text": "Ce înseamnă să cumperi titluri de stat, cum sunt Tezaur sau Fidelis?",
+      "options": [
+        "Împrumuți statului bani pentru o perioadă stabilită și primești o dobândă",
+        "Cumperi o parte dintr-o firmă de stat",
+        "Deschizi un cont curent la o bancă de stat"
+      ],
+      "correct": [0],
+      "explanation": "Titlurile de stat sunt împrumuturi pe care le dai statului român. La scadență îți primești banii înapoi, iar pe parcurs primești dobânda stabilită la cumpărare."
+    },
+    {
+      "id": "L4-Q27",
+      "text": "La titlurile de stat Fidelis din oferta din noiembrie 2026, cum este tratată dobânda?",
+      "options": [
+        "Dobânda nu se impozitează",
+        "Dobânda se impozitează cu 10%",
+        "Dobânda se impozitează cu 16%"
+      ],
+      "correct": [0],
+      "explanation": "Pentru Fidelis, dobânda primită este neimpozabilă. Asta înseamnă că o primești integral, fără să plătești impozit pe ea."
+    },
+    {
+      "id": "L4-Q28",
+      "text": "La oferta Fidelis din noiembrie 2026, vrei să cumperi titluri în lei de 150.000 lei. Care este suma maximă pe care o poți cumpăra ca investitor?",
+      "options": ["150.000 lei", "100.000 lei", "50.000 lei", "Nu există nicio limită"],
+      "correct": [1],
+      "explanation": "La emisiunile în lei din oferta din noiembrie 2026, un investitor poate cumpăra maximum 100.000 lei. Limita poate fi diferită la alte oferte, așa că o verifici de fiecare dată."
+    },
+    {
+      "id": "L4-Q29",
+      "text": "Ce e adevărat despre titlurile de stat? Bifează toate variantele corecte.",
+      "options": [
+        "Primești o dobândă stabilită de la început",
+        "La scadență îți primești înapoi suma împrumutată",
+        "Sunt garantate de FGDB, ca depozitele bancare",
+        "Poți retrage banii oricând, fără nicio condiție"
+      ],
+      "correct": [0, 1],
+      "explanation": "Titlurile de stat au o dobândă și o scadență stabilite la cumpărare. Ele nu sunt depozite bancare, deci nu intră în garanția FGDB, iar regulile pentru vânzarea înainte de scadență diferă de la o emisiune la alta."
+    },
+    {
+      "id": "L4-Q30",
+      "text": "Care sunt semnale de alarmă pentru o înșelătorie de tip „investiție”? Bifează toate variantele corecte.",
+      "options": [
+        "Ți se promite un câștig mare și garantat",
+        "Ești presat să te hotărăști „doar azi”",
+        "Primești bonusuri dacă aduci prieteni care să investească",
+        "Firma apare în registrul public al ASF ca entitate autorizată"
+      ],
+      "correct": [0, 1, 2],
+      "explanation": "Câștigurile mari garantate, presiunea de timp și bonusurile pentru recrutare sunt semnale tipice de înșelătorie. Autorizarea ASF nu e un semnal de alarmă, ci un lucru pe care îl verifici înainte să investești."
+    },
+    {
+      "id": "L4-Q31",
+      "text": "O reclamă îți promite un randament „garantat” de 30% pe lună, fără niciun risc. Ce este, cel mai probabil?",
+      "options": [
+        "O înșelătorie",
+        "O ofertă bună, pe care trebuie să o prinzi repede",
+        "Un depozit bancar obișnuit"
+      ],
+      "correct": [0],
+      "explanation": "Niciun produs legal nu poate garanta un câștig atât de mare fără risc. O promisiune de acest fel este un semnal clar de înșelătorie."
+    },
+    {
+      "id": "L4-Q32",
+      "text": "Vrei să investești printr-o firmă despre care nu ai mai auzit. Ce verifici mai întâi?",
+      "options": [
+        "Dacă firma este autorizată, în registrul public al ASF",
+        "Câte aprecieri are pagina firmei pe rețelele sociale",
+        "Dacă prietenii tăi au investit deja"
+      ],
+      "correct": [0],
+      "explanation": "Firmele care oferă servicii de investiții în România trebuie să fie autorizate, iar ASF publică registrul lor. Aprecierile și părerile prietenilor nu dovedesc că o firmă este legitimă."
+    },
+    {
+      "id": "L4-Q33",
+      "text": "Un „consultant de investiții” te sună și îți cere să instalezi o aplicație prin care să-ți „administreze” contul de pe telefonul tău. Ce faci?",
+      "options": [
+        "Refuzi și închizi, apoi verifici singur firma, din surse oficiale",
+        "Instalezi aplicația, ca să nu pierzi oportunitatea",
+        "Îi dai datele cardului, ca să înceapă mai repede"
+      ],
+      "correct": [0],
+      "explanation": "O aplicație de control de la distanță îi dă străinului acces la telefonul și la conturile tale. Nu instala aplicații și nu da datele cardului cuiva care te contactează nesolicitat."
+    },
+    {
+      "id": "L4-Q34",
+      "text": "Vezi pe rețelele sociale un videoclip în care o persoană cunoscută recomandă o platformă care „dublează banii în câteva zile”. Ce e cel mai probabil?",
+      "options": [
+        "Este o înșelătorie, iar imaginea persoanei cunoscute este folosită fără acordul ei",
+        "Este o investiție sigură, pentru că o recomandă cineva cunoscut",
+        "Este o ofertă oficială a statului"
+      ],
+      "correct": [0],
+      "explanation": "Înșelătoriile folosesc des imaginea unor persoane cunoscute, uneori în videoclipuri false. O promisiune de dublare rapidă a banilor este un semnal clar de înșelătorie, oricine ar părea că o face."
+    }
+  ]
+}

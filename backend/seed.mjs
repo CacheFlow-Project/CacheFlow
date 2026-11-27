@@ -84,6 +84,8 @@ async function upsertLessons(levelId, level) {
     position: lesson.position,
     title: lesson.title,
     content: lesson.description,
+    video_url: lesson.video_url,
+    duration_sec: lesson.duration_sec,
   }));
 
   const { error } = await supabase

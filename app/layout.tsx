@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Atkinson_Hyperlegible_Next, Bricolage_Grotesque } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import OfflineBanner from "@/components/OfflineBanner";
 import "./globals.css";
 
 const heading = Bricolage_Grotesque({
@@ -29,6 +30,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
     <html lang="ro" className={`${heading.variable} ${body.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col pb-16 sm:pb-0">
         <SiteHeader />
+        <OfflineBanner />
         {children}
         <SiteFooter />
       </body>

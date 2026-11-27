@@ -18,8 +18,8 @@
       "text": "Pe fluturașul de salariu vezi „brut” și „net”. Ce înseamnă salariul brut?",
       "options": [
         "Salariul înainte de reținerea contribuțiilor și a impozitului",
-        "Suma care îți intră efectiv în cont",
-        "Salariul plus bonusurile de la final de an"
+        "Suma care îți intră efectiv în cont, după toate reținerile",
+        "Salariul din contract plus bonusurile primite la final de an"
       ],
       "correct": [0],
       "explanation": "Brutul este salariul din contract, din care se rețin CAS, CASS și impozitul pe venit. Ce rămâne după aceste rețineri este salariul net, adică suma care îți intră în cont."
@@ -28,61 +28,61 @@
       "id": "L3-Q02",
       "text": "La ce folosește contribuția CAS reținută din salariu?",
       "options": [
+        "La asigurarea de sănătate: îți plătește consultațiile la medic",
         "La pensie: anii în care ai plătit CAS contează pentru pensia ta",
-        "La asigurarea de sănătate",
-        "La plata TVA-ului"
+        "La plata TVA-ului pentru ce cumperi în fiecare lună"
       ],
-      "correct": [0],
+      "correct": [1],
       "explanation": "CAS este contribuția de asigurări sociale, adică la pensie, și este 25% din salariul brut. Contribuția pentru sănătate este CASS."
     },
     {
       "id": "L3-Q03",
       "text": "Ce procente se aplică, pentru un angajat, la CAS și la CASS?",
       "options": [
-        "CAS 25% și CASS 10% din salariul brut",
         "CAS 10% și CASS 25% din salariul brut",
-        "CAS 21% și CASS 11% din salariul brut"
+        "CAS 21% și CASS 11% din salariul brut",
+        "CAS 25% și CASS 10% din salariul brut"
       ],
-      "correct": [0],
+      "correct": [2],
       "explanation": "Din brut se rețin 25% pentru pensie (CAS) și 10% pentru sănătate (CASS). 21% și 11% sunt cotele de TVA, care nu se rețin din salariu."
     },
     {
       "id": "L3-Q04",
       "text": "Din ce sumă se calculează impozitul pe venit de 10% la salariu?",
       "options": [
-        "Din salariul brut, după ce se scad CAS și CASS (și eventuala deducere personală)",
-        "Direct din salariul brut",
-        "Din salariul net"
+        "Din salariul brut, după ce se scad CAS, CASS și eventualele deduceri",
+        "Direct din salariul brut, înainte de orice reținere",
+        "Din salariul net, după ce ți-a intrat în cont"
       ],
       "correct": [0],
-      "explanation": "Mai întâi se scad din brut CAS și CASS, iar dacă ai dreptul, și deducerea personală. Impozitul de 10% se aplică sumei rămase. O greșeală des întâlnită este calculul impozitului direct din brut."
+      "explanation": "Mai întâi se scad din brut CAS și CASS, iar dacă ai dreptul, și deducerile, de exemplu deducerea personală sau suma netaxabilă la salariul minim. Impozitul de 10% se aplică sumei rămase. O greșeală des întâlnită este calculul impozitului direct din brut."
     },
     {
       "id": "L3-Q05",
       "text": "Salariul tău brut este 6.000 lei și nu ai deducere personală. Cât primești net?",
-      "options": ["3.900 lei", "3.510 lei", "3.300 lei", "5.400 lei"],
+      "options": ["3.300 lei", "3.510 lei", "3.900 lei", "5.400 lei"],
       "correct": [1],
-      "explanation": "CAS = 25% × 6.000 = 1.500 lei, CASS = 10% × 6.000 = 600 lei, deci baza de impozitare este 3.900 lei. Impozitul este 10% × 3.900 = 390 lei, iar netul este 3.900 − 390 = 3.510 lei."
+      "explanation": "CAS = 25% × 6.000 = 1.500 lei, CASS = 10% × 6.000 = 600 lei, deci baza de impozitare este 3.900 lei. Impozitul este 10% × 3.900 = 390 lei, iar netul este 3.900 − 390 = 3.510 lei. În realitate, mulți angajați au o deducere personală, care scade impozitul. O vezi pe fluturașul de salariu."
     },
     {
       "id": "L3-Q06",
-      "text": "Salariul tău brut este 3.000 lei și nu ai deducere personală. Cât este CASS-ul reținut?",
-      "options": ["300 lei", "750 lei", "195 lei", "30 lei"],
-      "correct": [0],
-      "explanation": "CASS este 10% din brut: 3.000 × 0,10 = 300 lei. 750 lei este CAS-ul (25%), iar 195 lei este impozitul pe venit."
+      "text": "Salariul tău brut este 5.000 lei și nu ai deducere personală. Cât este CASS-ul reținut?",
+      "options": ["50 lei", "325 lei", "500 lei", "1.250 lei"],
+      "correct": [2],
+      "explanation": "CASS este 10% din brut: 5.000 × 0,10 = 500 lei. 1.250 lei este CAS-ul (25%), iar 325 lei este impozitul pe venit."
     },
     {
       "id": "L3-Q07",
       "text": "Salariul tău brut este 8.000 lei și nu ai deducere personală. Cât este impozitul pe venit?",
-      "options": ["800 lei", "520 lei", "480 lei", "2.800 lei"],
-      "correct": [1],
-      "explanation": "Din 8.000 lei se scad CAS (2.000 lei) și CASS (800 lei), iar baza rămasă este 5.200 lei. Impozitul este 10% din 5.200, adică 520 lei. 800 lei ar fi 10% direct din brut, ceea ce este greșit."
+      "options": ["520 lei", "800 lei", "2.800 lei", "5.200 lei"],
+      "correct": [0],
+      "explanation": "Din 8.000 lei se scad CAS (2.000 lei) și CASS (800 lei), iar baza rămasă este 5.200 lei. Impozitul este 10% din 5.200, adică 520 lei. 800 lei ar fi 10% direct din brut, ceea ce este greșit, iar 5.200 lei este baza de impozitare, nu impozitul."
     },
     {
       "id": "L3-Q08",
-      "text": "Fără deducere personală, ce procent din salariul brut ajunge, aproximativ, la tine ca salariu net?",
-      "options": ["58,5%", "65%", "55%", "90%"],
-      "correct": [0],
+      "text": "Fără deducere personală, ce procent din salariul brut ajunge la tine ca salariu net?",
+      "options": ["55%", "58,5%", "65%", "90%"],
+      "correct": [1],
       "explanation": "După CAS și CASS rămân 65% din brut. Impozitul ia 10% din acești 65%, deci rămân 65% × 0,90 = 58,5% din brut. 55% ar fi rezultatul calculului greșit, cu impozitul luat direct din brut."
     },
     {
@@ -90,33 +90,33 @@
       "text": "Care dintre acestea apar, de obicei, pe fluturașul de salariu al unui angajat? Bifează toate variantele corecte.",
       "options": [
         "Salariul brut",
+        "TVA-ul plătit pe cumpărăturile din luna respectivă",
         "Contribuțiile CAS și CASS reținute",
-        "Impozitul pe venit",
-        "TVA-ul plătit pe cumpărăturile din luna respectivă"
+        "Impozitul pe venit"
       ],
-      "correct": [0, 1, 2],
+      "correct": [0, 2, 3],
       "explanation": "Fluturașul arată brutul, reținerile (CAS, CASS, impozit) și netul. TVA-ul îl plătești la cumpărături și nu are legătură cu fluturașul."
     },
     {
       "id": "L3-Q10",
       "text": "Cine se ocupă de plata către stat a CAS-ului, CASS-ului și impozitului pe salariu, pentru un angajat cu contract de muncă?",
       "options": [
+        "Angajatul, care merge lunar la ANAF să le plătească singur",
         "Angajatorul: le reține din salariul brut și le plătește statului",
-        "Angajatul, care merge lunar la ANAF să le plătească",
-        "Nimeni, pentru că angajații nu plătesc taxe"
+        "Nimeni, pentru că angajații cu contract nu plătesc taxe sau contribuții"
       ],
-      "correct": [0],
+      "correct": [1],
       "explanation": "Angajatorul calculează contribuțiile și impozitul, le reține din brut și le plătește statului. Tu primești direct salariul net."
     },
     {
       "id": "L3-Q11",
       "text": "Ce trebuie să existe între tine și angajator înainte să începi lucrul?",
       "options": [
-        "Un contract individual de muncă încheiat în scris",
         "O înțelegere verbală e suficientă",
-        "Un contract se semnează după primul salariu"
+        "Un contract se semnează după primul salariu",
+        "Un contract individual de muncă încheiat în scris"
       ],
-      "correct": [0],
+      "correct": [2],
       "explanation": "Contractul individual de muncă se încheie în scris, înainte de începerea activității, iar tu primești un exemplar. Fără contract nu ai protecția și drepturile unui angajat."
     },
     {
@@ -124,8 +124,8 @@
       "text": "Ce este perioada de probă dintr-un contract de muncă?",
       "options": [
         "O perioadă de la început în care angajatorul și angajatul verifică dacă postul se potrivește",
-        "O perioadă în care lucrezi fără salariu",
-        "O perioadă în care lucrezi fără contract"
+        "O perioadă de la început în care lucrezi gratuit, ca să arăți ce știi",
+        "O perioadă în care lucrezi fără contract, până când te angajează oficial"
       ],
       "correct": [0],
       "explanation": "În perioada de probă ești angajat cu contract și ai drepturile unui salariat, inclusiv salariul. Ce se schimbă este că, în această perioadă, contractul poate fi încetat mai ușor, de oricare dintre părți."
@@ -134,22 +134,22 @@
       "id": "L3-Q13",
       "text": "Ce înseamnă o normă întreagă de lucru, conform Codului muncii?",
       "options": [
-        "8 ore pe zi, adică 40 de ore pe săptămână",
         "6 ore pe zi, adică 30 de ore pe săptămână",
+        "8 ore pe zi, adică 40 de ore pe săptămână",
         "10 ore pe zi, adică 50 de ore pe săptămână"
       ],
-      "correct": [0],
+      "correct": [1],
       "explanation": "Pentru salariații cu normă întreagă, durata normală a timpului de muncă este 8 ore pe zi și 40 de ore pe săptămână. La jumătate de normă lucrezi mai puține ore, iar salariul se calculează proporțional."
     },
     {
       "id": "L3-Q14",
       "text": "Câte zile de concediu de odihnă plătit are minimum un angajat pe an, conform Codului muncii?",
       "options": [
-        "20 de zile lucrătoare",
         "10 zile lucrătoare",
-        "Nicio zi, dacă angajatorul nu vrea"
+        "Nicio zi, dacă angajatorul nu vrea",
+        "20 de zile lucrătoare"
       ],
-      "correct": [0],
+      "correct": [2],
       "explanation": "Codul muncii prevede minimum 20 de zile lucrătoare de concediu de odihnă pe an. Contractul poate da mai multe zile, dar nu mai puține."
     },
     {
@@ -158,21 +158,21 @@
       "options": [
         "Salariul brut",
         "Norma de lucru: întreagă sau parțială",
-        "Durata perioadei de probă",
-        "Culoarea logo-ului firmei"
+        "Culoarea logo-ului firmei",
+        "Durata perioadei de probă"
       ],
-      "correct": [0, 1, 2],
-      "explanation": "Salariul, norma, perioada de probă, concediul și postul sunt elementele importante ale contractului. Citește-l întreg și cere un exemplar semnat pentru tine."
+      "correct": [0, 1, 3],
+      "explanation": "Salariul, norma de lucru și perioada de probă sunt printre cele mai importante elemente ale contractului. Citește-l întreg și cere un exemplar semnat pentru tine."
     },
     {
       "id": "L3-Q16",
       "text": "Ce înseamnă să lucrezi „la negru”?",
       "options": [
-        "Lucrezi fără contract de muncă, iar banii îi primești fără să se plătească taxe și contribuții",
-        "Lucrezi în tura de noapte",
-        "Lucrezi cu contract, dar de acasă"
+        "Lucrezi în tura de noapte, cu un spor de salariu prevăzut în contract",
+        "Lucrezi cu contract de muncă, dar de acasă, fără să mergi la birou",
+        "Lucrezi fără contract, iar pentru tine nu se plătesc taxe și contribuții"
       ],
-      "correct": [0],
+      "correct": [2],
       "explanation": "Munca la negru înseamnă că nu există contract și nu se plătesc contribuții pentru tine. Pare că primești mai mult, dar pierzi drepturi importante."
     },
     {
@@ -181,21 +181,21 @@
       "options": [
         "Anii lucrați nu se iau în calcul pentru pensie",
         "Nu ești asigurat de sănătate prin munca ta",
-        "Nu ai un contract cu care să-ți aperi drepturile, de exemplu dacă nu ești plătit",
-        "Primești automat un salariu mai mare, garantat"
+        "Primești automat un salariu mai mare, garantat",
+        "Nu ai un contract cu care să-ți aperi drepturile, de exemplu dacă nu ești plătit"
       ],
-      "correct": [0, 1, 2],
+      "correct": [0, 1, 3],
       "explanation": "Fără contract nu se plătește CAS pentru pensie și nici CASS pentru sănătate, iar dacă angajatorul nu te plătește, nu ai un document cu care să ceri banii. Niciun câștig nu e garantat."
     },
     {
       "id": "L3-Q18",
       "text": "Angajatorul îți propune un contract cu un salariu mic, iar restul banilor „la mână”, fără acte. Care este dezavantajul pentru tine?",
       "options": [
-        "Contribuțiile pentru pensie și sănătate se plătesc doar pentru salariul mic din contract",
-        "Nu există niciun dezavantaj, pentru că primești toți banii",
-        "Plătești mai mult TVA la cumpărături"
+        "Nu există niciun dezavantaj, pentru că primești în total aceiași bani",
+        "Plătești mai mult TVA la cumpărături, pentru că ai mai mulți bani cash",
+        "Contribuțiile pentru pensie și sănătate se plătesc doar pentru salariul mic din contract"
       ],
-      "correct": [0],
+      "correct": [2],
       "explanation": "Pensia și alte drepturi se calculează după salariul declarat. Banii primiți fără acte nu contează nicăieri și nu poți dovedi că i-ai câștigat, de exemplu când ceri un credit."
     },
     {
@@ -203,8 +203,8 @@
       "text": "De ce ajută un salariu declarat integral, cu contract, când vrei să iei un credit sau să închiriezi o locuință?",
       "options": [
         "Poți dovedi venitul cu acte, de exemplu cu o adeverință de venit",
-        "Banca nu verifică niciodată venitul",
-        "Salariul declarat nu contează"
+        "Banca nu verifică niciodată venitul, deci contractul nu contează",
+        "Salariul declarat contează doar pentru angajator, nu și pentru bancă"
       ],
       "correct": [0],
       "explanation": "Banca și, uneori, proprietarul vor dovada venitului. Banii primiți fără acte nu se pot dovedi, deci nu te ajută."
@@ -213,31 +213,31 @@
       "id": "L3-Q20",
       "text": "Ce este CASS, contribuția reținută din salariu?",
       "options": [
-        "Contribuția la asigurările sociale de sănătate, care îți dă acces la servicii medicale în sistemul public",
-        "Contribuția la pensie",
-        "O taxă pe cumpărături"
+        "Contribuția la pensie, din care se va plăti pensia ta de mai târziu",
+        "Contribuția pentru sănătate, care te face asigurat în sistemul public",
+        "O taxă inclusă în prețul produselor pe care le cumperi"
       ],
-      "correct": [0],
+      "correct": [1],
       "explanation": "CASS este 10% din brut și te face asigurat în sistemul public de sănătate. Pensia se plătește prin CAS, iar taxa pe cumpărături este TVA-ul."
     },
     {
       "id": "L3-Q21",
       "text": "Ce îți asigură, de obicei, calitatea de asigurat de sănătate? Bifează toate variantele corecte.",
       "options": [
-        "Consultații la medicul de familie",
-        "Internare în spital în sistemul public",
         "Orice tratament în orice clinică privată, gratuit",
-        "Concediu medical plătit, când ești bolnav și ai dreptul"
+        "Orice medicament, gratuit, fără rețetă",
+        "Consultații la medicul de familie",
+        "Internare în spital în sistemul public"
       ],
-      "correct": [0, 1, 3],
-      "explanation": "Asigurarea de sănătate acoperă serviciile din sistemul public, de exemplu medicul de familie și spitalizarea, și îți dă dreptul la concediu medical plătit, în condițiile legii. Clinicile private nu sunt automat gratuite."
+      "correct": [2, 3],
+      "explanation": "Asigurarea de sănătate acoperă serviciile din sistemul public, de exemplu medicul de familie și spitalizarea. Clinicile private și medicamentele nu sunt automat gratuite."
     },
     {
       "id": "L3-Q22",
       "text": "Ce este TVA-ul?",
       "options": [
         "O taxă inclusă în prețul produselor și serviciilor, pe care o plătești când cumperi",
-        "O contribuție reținută din salariu",
+        "O contribuție reținută lunar din salariul brut al angajaților",
         "O taxă pe care o plătesc doar firmele, fără să afecteze prețurile"
       ],
       "correct": [0],
@@ -246,50 +246,50 @@
     {
       "id": "L3-Q23",
       "text": "Care este cota standard de TVA în România?",
-      "options": ["21%", "19%", "10%", "25%"],
-      "correct": [0],
+      "options": ["10%", "19%", "21%", "25%"],
+      "correct": [2],
       "explanation": "Cota standard de TVA este 21%. Până în august 2025 era 19%, așa că materialele mai vechi pot avea cifra greșită."
     },
     {
       "id": "L3-Q24",
       "text": "Un produs costă 100 lei fără TVA și are cota standard de 21%. Cât plătești la casă?",
-      "options": ["121 lei", "100 lei", "119 lei", "111 lei"],
-      "correct": [0],
+      "options": ["100 lei", "111 lei", "119 lei", "121 lei"],
+      "correct": [3],
       "explanation": "TVA = 21% × 100 = 21 lei, deci prețul final este 121 lei. 119 lei ar fi cu vechea cotă de 19%, iar 111 lei cu cota redusă de 11%."
     },
     {
       "id": "L3-Q25",
       "text": "Plătești 242 lei pentru un produs cu TVA de 21%, inclus în preț. Cât din această sumă este TVA?",
-      "options": ["42 lei", "50,82 lei", "21 lei", "24,20 lei"],
-      "correct": [0],
+      "options": ["21 lei", "24,20 lei", "42 lei", "50,82 lei"],
+      "correct": [2],
       "explanation": "Prețul fără TVA este 242 ÷ 1,21 = 200 lei, deci TVA-ul este 242 − 200 = 42 lei. 50,82 lei ar fi 21% din 242, o greșeală des întâlnită: TVA-ul se calculează din prețul fără TVA."
     },
     {
       "id": "L3-Q26",
       "text": "Pentru care dintre acestea se aplică, de regulă, cota redusă de TVA de 11%? Bifează toate variantele corecte.",
-      "options": ["Alimente", "Medicamente", "Un televizor", "Un telefon mobil"],
-      "correct": [0, 1],
-      "explanation": "Cota redusă de 11% se aplică, printre altele, alimentelor și medicamentelor. Electronicele, cum sunt televizorul și telefonul, au cota standard de 21%."
+      "options": ["Un televizor", "Alimente", "Un telefon mobil", "Medicamente"],
+      "correct": [1, 3],
+      "explanation": "Cota redusă de 11% se aplică, printre altele, majorității alimentelor și medicamentelor. Electronicele, cum sunt televizorul și telefonul, au cota standard de 21%."
     },
     {
       "id": "L3-Q27",
       "text": "Câștigi 3.360 lei net pe lună și lucrezi 168 de ore pe lună. Cât câștigi, net, pe oră?",
-      "options": ["20 lei", "16,80 lei", "33,60 lei", "200 lei"],
-      "correct": [0],
+      "options": ["16,80 lei", "20 lei", "33,60 lei", "200 lei"],
+      "correct": [1],
       "explanation": "Câștigul pe oră = salariul net ÷ orele lucrate: 3.360 ÷ 168 = 20 lei pe oră."
     },
     {
       "id": "L3-Q28",
       "text": "Câștigi 20 lei net pe oră. Câte ore de muncă costă un telefon de 2.400 lei?",
-      "options": ["120 de ore", "24 de ore", "48 de ore", "240 de ore"],
-      "correct": [0],
-      "explanation": "2.400 ÷ 20 = 120 de ore, adică 15 zile de lucru a câte 8 ore. Gândit așa, prețul arată cât timp din viața ta costă obiectul."
+      "options": ["24 de ore", "48 de ore", "120 de ore", "240 de ore"],
+      "correct": [2],
+      "explanation": "2.400 ÷ 20 = 120 de ore, adică 15 zile de lucru a câte 8 ore. Așa vezi câtă muncă te costă, de fapt, obiectul."
     },
     {
       "id": "L3-Q29",
       "text": "Câștigi 20 lei net pe oră și cumperi o cafea de 15 lei în fiecare zi lucrătoare, adică 20 de zile pe lună. Câte ore de muncă te costă cafelele într-o lună?",
-      "options": ["15 ore", "20 de ore", "3 ore", "300 de ore"],
-      "correct": [0],
+      "options": ["3 ore", "15 ore", "20 de ore", "300 de ore"],
+      "correct": [1],
       "explanation": "Pe lună cheltui 15 × 20 = 300 lei. 300 ÷ 20 = 15 ore de muncă, aproape două zile de lucru."
     },
     {
@@ -297,8 +297,8 @@
       "text": "De ce te ajută să transformi prețul unui obiect în ore de muncă?",
       "options": [
         "Vezi mai clar cât efort costă cumpărătura și decizi mai ușor dacă merită",
-        "Obiectul devine mai ieftin",
-        "Angajatorul îți plătește obiectul"
+        "Obiectul devine mai ieftin dacă îl plătești din salariul pe câteva ore",
+        "Angajatorul îți plătește obiectul dacă lucrezi orele respective"
       ],
       "correct": [0],
       "explanation": "Un preț în lei poate părea abstract. Când știi că un obiect costă, de exemplu, o săptămână de muncă, compari mai ușor costul cu cât de mult îl vrei."
@@ -306,20 +306,20 @@
     {
       "id": "L3-Q31",
       "text": "Ai un salariu net de 4.000 lei pe lună și lucrezi 160 de ore. Câte zile de lucru, a câte 8 ore, costă o pereche de pantofi de 400 lei?",
-      "options": ["2 zile", "1 zi", "4 zile", "10 zile"],
-      "correct": [0],
+      "options": ["1 zi", "4 zile", "10 zile", "2 zile"],
+      "correct": [3],
       "explanation": "Câștigi 4.000 ÷ 160 = 25 lei pe oră. Pantofii costă 400 ÷ 25 = 16 ore, adică 16 ÷ 8 = 2 zile de lucru."
     },
     {
       "id": "L3-Q32",
-      "text": "Ce acte îți trebuie, de obicei, la primul loc de muncă? Bifează toate variantele corecte.",
+      "text": "Ce acte sunt implicate, de obicei, la primul loc de muncă? Bifează toate variantele corecte.",
       "options": [
         "Actul de identitate",
-        "Contractul individual de muncă, semnat de tine și de angajator",
-        "Fișa de aptitudine de la examenul medical la angajare",
-        "Carnetul de note de la școală"
+        "Contractul individual de muncă, pe care îl semnezi cu angajatorul",
+        "Carnetul de note de la școală",
+        "Fișa de aptitudine de la examenul medical la angajare"
       ],
-      "correct": [0, 1, 2],
+      "correct": [0, 1, 3],
       "explanation": "La angajare ai nevoie de actul de identitate, de examenul medical prin care medicul de medicina muncii confirmă că poți face munca respectivă și de contractul semnat. Angajatorul îți poate cere și alte acte, în funcție de post, de exemplu diplome."
     },
     {
@@ -327,8 +327,8 @@
       "text": "Ai semnat contractul de muncă. Ce e bine să păstrezi?",
       "options": [
         "Un exemplar al contractului semnat și fluturașii de salariu",
-        "Nimic, toate actele rămân la angajator",
-        "Doar bonurile de la cumpărături"
+        "Nimic, toate actele rămân la angajator și le poți cere oricând",
+        "Doar bonurile de la cumpărăturile făcute din primul salariu"
       ],
       "correct": [0],
       "explanation": "Exemplarul tău de contract și fluturașii arată ce drepturi ai și cât ai fost plătit. Îți folosesc dacă apare o neînțelegere cu angajatorul sau dacă ai nevoie să dovedești venitul."
